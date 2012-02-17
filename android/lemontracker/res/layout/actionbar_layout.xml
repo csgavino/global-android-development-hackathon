@@ -12,4 +12,16 @@
               android:layout_toRightOf="@id/lemonTextView"
               style="@style/text"/>
 
+    <Button android:id="@+id/listButton"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/list_drawable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <Button android:id="@+id/searchButton"
+            android:layout_toLeftOf="@id/listButton"
+            android:background="@drawable/search_drawable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
 </RelativeLayout>

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.widget.TextView;
+import com.googlecode.androidannotations.annotations.Click;
 import com.googlecode.androidannotations.annotations.EActivity;
 import com.googlecode.androidannotations.annotations.ViewById;
 import com.lemontracker.android.R;
@@ -28,5 +29,16 @@ public class Dashboard extends Activity {
         trackerTextView.setText("Tracker");
         trackerTextView.setTypeface(tf);
     }
+
+    @Click(R.id.listButton)
+    public void listButtonClick() {
+
+    }
+
+    @Click(R.id.searchButton)
+    public void searchButtonClick() {
+
+    }
+
 
 }
