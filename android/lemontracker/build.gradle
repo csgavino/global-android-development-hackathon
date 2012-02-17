@@ -1,0 +1,84 @@
+description = "LemonTracker"
+abbreviation = "LemonTracker"
+version = '1.0.0.BUILD-SNAPSHOT'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+
+    def gradleAndroidAnnotationsPluginVersion = '0.3.0'
+
+    dependencies {
+        classpath "net.ealden.gradle.plugins:gradle-androidannotations-plugin:$gradleAndroidAnnotationsPluginVersion"
+    }
+}
+
+apply plugin: 'androidannotations'
+apply plugin: 'idea'
+
+def compatibilityVersion = 1.6
+sourceCompatibility = compatibilityVersion
+targetCompatibility = compatibilityVersion
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'http://maven.springframework.org/milestone'
+    }
+    maven {
+        url 'http://maven.teamcodeflux.com/release'
+    }
+    maven {
+        url 'https://oss.sonatype.org/content/repositories/snapshots/'
+    }
+}
+
+def springAndroidVersion = '1.0.0.M4'
+def jacksonMapperVersion = '1.8.5'
+def junitVersion = '4.10'
+def robolectricVersion = '1.0'
+def androidVersion = '2.2.1'
+androidAnnotationsVersion = '2.2'
+def commonsCodecVersion = '1.4'
+def fluxdroidVersion = '0.2.0'
+def mockitoVersion = '1.8.5'
+
+dependencies {
+    compile fileTree(dir: 'libs', include: '*.jar')
+    compile "com.teamcodeflux.android:fluxdroid:$fluxdroidVersion"
+    compile("com.googlecode.androidannotations:androidannotations:$androidAnnotationsVersion:api") {
+        exclude module: 'codemodel'
+    }
+    compile "org.springframework.android:spring-android-rest-template:$springAndroidVersion"
+    compile "org.codehaus.jackson:jackson-mapper-asl:$jacksonMapperVersion"
+    compile "org.slf4j:slf4j-api:1.6.4"
+    compile "org.slf4j:slf4j-simple:1.6.4"
+    compile "commons-codec:commons-codec:$commonsCodecVersion"
+    testCompile("com.google.android:android:$androidVersion") {
+        provided = true
+    }
+    testCompile "com.pivotallabs:robolectric:$robolectricVersion"
+    testCompile "junit:junit:$junitVersion"
+    testCompile "org.mockito:mockito-all:$mockitoVersion"
+}
+
+clean {
+    delete 'gen'
+}
+
+idea {
+    module {
+        downloadSources = true
+        downloadJavadoc = true
+    }
+    project {
+        jdkName = 'Android 2.2 Platform'
+        languageLevel = compatibilityVersion
+    }
+}
+
+androidProcessResources.dependsOn(clean)
+
+defaultTasks 'assemble'
