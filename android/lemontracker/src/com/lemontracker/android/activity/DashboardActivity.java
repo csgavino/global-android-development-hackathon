@@ -32,16 +32,30 @@ public class DashboardActivity extends Activity {
     }
 
     @Click(R.id.listButton)
-    public void listButtonClick() {
+    public void listButtonClicked() {
         Intent i = new Intent(this, ListActivity.class);
         startActivity(i);
     }
 
     @Click(R.id.searchButton)
-    public void searchButtonClick() {
+    public void searchButtonClicked() {
         Intent i = new Intent(this, SearchActivity.class);
         startActivity(i);
     }
 
+    @Click(R.id.today)
+    public void todayCellClicked() {
+
+    }
+
+    @Click(R.id.shops)
+    public void shopsCellClicked() {
+
+    }
+
+    @Click(R.id.restaurants)
+    public void restaurantsCellClicked() {
+
+    }
 
 }
