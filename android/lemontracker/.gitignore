@@ -1,0 +1,12 @@
+local.properties
+.gradle
+*.iml
+*.iws
+*.ipr
+build
+.classpath
+.project
+.settings
+gen
+out
+tmp
