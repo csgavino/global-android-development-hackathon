@@ -39,7 +39,8 @@ public class DashboardActivity extends Activity {
 
     @Click(R.id.searchButton)
     public void searchButtonClick() {
-
+        Intent i = new Intent(this, SearchActivity.class);
+        startActivity(i);
     }
 
 
