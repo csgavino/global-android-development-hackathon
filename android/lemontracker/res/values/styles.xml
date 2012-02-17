@@ -1,19 +1,38 @@
 <resources>
+    <style name="parentContainer">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="actionbarContainer">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">48dip</item>
+        <item name="android:background">#FFFFFF</item>
+    </style>
+
     <style name="text">
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:textSize">24sp</item>
         <item name="android:paddingTop">8dip</item>
         <item name="android:paddingBottom">8dip</item>
+        <item name="android:gravity">center_vertical</item>
     </style>
 
     <style name="text.lemon">
         <item name="android:textColor">@color/green</item>
-        <item name="android:paddingLeft">15dip</item>
+        <item name="android:paddingLeft">20dip</item>
     </style>
 
     <style name="text.tracker">
+    </style>
 
+    <style name="button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_gravity">center_vertical</item>
     </style>
 
 </resources>

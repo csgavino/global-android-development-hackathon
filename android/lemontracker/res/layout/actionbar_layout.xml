@@ -1,27 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="#FFFFFF">
+                style="@style/actionbarContainer">
 
     <TextView android:id="@+id/lemonTextView"
               style="@style/text.lemon"/>
 
     <TextView android:id="@+id/trackerTextView"
               android:layout_toRightOf="@id/lemonTextView"
-              style="@style/text"/>
+              style="@style/text.tracker"/>
 
     <Button android:id="@+id/listButton"
             android:layout_alignParentRight="true"
             android:background="@drawable/list_drawable"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            style="@style/button"/>
 
     <Button android:id="@+id/searchButton"
             android:layout_toLeftOf="@id/listButton"
             android:background="@drawable/search_drawable"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            style="@style/button"/>
 
 </RelativeLayout>

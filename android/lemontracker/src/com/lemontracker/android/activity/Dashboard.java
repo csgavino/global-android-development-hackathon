@@ -24,7 +24,7 @@ public class Dashboard extends Activity {
         setContentView(R.layout.dashboard_layout);
         lemonTextView.setText("Lemon");
         Typeface tf = Typeface.createFromAsset(getAssets(),
-                "FuturaLT.ttf");
+                "FuturaLT-CondensedBold.ttf");
         lemonTextView.setTypeface(tf);
         trackerTextView.setText("Tracker");
         trackerTextView.setTypeface(tf);
