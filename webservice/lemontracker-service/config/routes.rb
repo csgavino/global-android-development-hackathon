@@ -1,7 +1,14 @@
 LemontrackerService::Application.routes.draw do
  
  
+  get 'services/categories' =>  "service#category_index"
  
+  get 'services/categories/:id' =>  "service#category_show"
+ 
+  get 'services/categories/:id/events' =>  "service#category_events" 
+ 
+  get 'services/events/:id' =>  "service#events_show"
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
