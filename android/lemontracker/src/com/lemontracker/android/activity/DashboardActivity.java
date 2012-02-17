@@ -10,7 +10,7 @@ import com.googlecode.androidannotations.annotations.ViewById;
 import com.lemontracker.android.R;
 
 @EActivity
-public class Dashboard extends Activity {
+public class DashboardActivity extends Activity {
 
     @ViewById
     TextView lemonTextView;
