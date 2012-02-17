@@ -1,6 +1,7 @@
 package com.lemontracker.android.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -32,7 +33,8 @@ public class DashboardActivity extends Activity {
 
     @Click(R.id.listButton)
     public void listButtonClick() {
-
+        Intent i = new Intent(this, ListActivity.class);
+        startActivity(i);
     }
 
     @Click(R.id.searchButton)
