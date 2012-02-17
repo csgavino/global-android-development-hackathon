@@ -1,13 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              style="@style/parentContainer">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            style="@style/scrollContainer">
 
-    <include layout="@layout/actionbar_layout"/>
+    <RelativeLayout style="@style/parentContainer">
 
-    <TextView android:id="@+id/hello"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="Foobar"/>
+        <include android:id="@+id/actionbar" layout="@layout/actionbar_layout"/>
 
-</LinearLayout>
+        <RelativeLayout android:id="@+id/content"
+                        android:layout_margin="32dip"
+                        android:layout_below="@id/actionbar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+            <TextView android:id="@+id/today"
+                      android:background="#3399FF"
+                      android:layout_margin="8dip"
+                      android:layout_width="166dip"
+                      android:layout_height="348dip"/>
+
+            <TextView android:id="@+id/shops"
+                      android:background="#3300FF"
+                      android:layout_margin="8dip"
+                      android:layout_toRightOf="@id/today"
+                      android:layout_width="166dip"
+                      android:layout_height="166dip"/>
+
+            <TextView android:id="@+id/restaurants"
+                      android:background="#99CC00"
+                      android:layout_margin="8dip"
+                      android:layout_toRightOf="@id/today"
+                      android:layout_below="@id/shops"
+                      android:layout_width="166dip"
+                      android:layout_height="166dip"/>
+
+            <TextView android:id="@+id/others"
+                      android:layout_margin="8dip"
+                      android:background="#FF9933"
+                      android:layout_below="@id/today"
+                      android:layout_width="332dip"
+                      android:layout_height="166dip"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</ScrollView>
