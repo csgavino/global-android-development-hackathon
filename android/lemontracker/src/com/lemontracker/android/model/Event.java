@@ -74,6 +74,8 @@ public class Event implements Parcelable {
         parcel.writeSerializable(dateStart);
         parcel.writeSerializable(dateEnd);
         parcel.writeLong(categoryId);
+        parcel.writeFloat(longitude);
+        parcel.writeFloat(latitude);
         /*
         parcel.writeParcelable(category, i);
         parcel.writeParcelable(user, i);
@@ -90,6 +92,8 @@ public class Event implements Parcelable {
         dateStart = (Date) source.readSerializable();
         dateEnd = (Date) source.readSerializable();
         categoryId = source.readLong();
+        longitude = source.readFloat();
+        latitude = source.readFloat();
         /*
         category = source.readParcelable(Category.class.getClassLoader());
         user = source.readParcelable(User.class.getClassLoader());

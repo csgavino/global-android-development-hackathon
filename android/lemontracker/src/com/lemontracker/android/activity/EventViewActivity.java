@@ -66,6 +66,7 @@ public class EventViewActivity extends Activity {
     @Click(R.id.map)
     public void mapCellClicked() {
         Intent i = new Intent(this, EventMapActivity_.class);
+        i.putExtra("event", event);
         startActivity(i);
     }
 

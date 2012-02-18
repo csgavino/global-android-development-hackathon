@@ -9,14 +9,19 @@ import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
 import com.googlecode.androidannotations.annotations.AfterViews;
 import com.googlecode.androidannotations.annotations.EActivity;
+import com.googlecode.androidannotations.annotations.Extra;
 import com.lemontracker.android.MapItemizedOverlay;
 import com.lemontracker.android.R;
+import com.lemontracker.android.model.Event;
 
 import java.util.List;
 
 @EActivity(R.layout.map_layout)
 public class EventMapActivity extends MapActivity {
     public static final String TAG = EventMapActivity.class.getSimpleName();
+
+    @Extra("event")
+    Event event;
 
     MapItemizedOverlay itemizedOverlay;
     List<Overlay> mapOverlays;
@@ -36,7 +41,10 @@ public class EventMapActivity extends MapActivity {
         drawable = this.getResources().getDrawable(R.drawable.androidmarker);
         itemizedOverlay = new MapItemizedOverlay(drawable);
 
-        GeoPoint point = new GeoPoint(19240000, -99120000);
+        int latE6 = (int) (event.getLatitude() * 1e6);
+        int lonE6 = (int) (event.getLongitude() * 1e6);
+
+        GeoPoint point = new GeoPoint(latE6, lonE6);
         OverlayItem overlayitem = new OverlayItem(point, "", "");
 
         itemizedOverlay.addOverlay(overlayitem);
