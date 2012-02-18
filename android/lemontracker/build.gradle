@@ -83,4 +83,11 @@ idea {
 
 androidProcessResources.dependsOn(clean)
 
+androidSignAndAlign {
+    keyStore = "lemontracker.keystore"
+    keyAlias = "key0"
+    keyStorePassword = "lemontracker"
+    keyAliasPassword = "lemontracker"
+}
+
 defaultTasks 'assemble'
