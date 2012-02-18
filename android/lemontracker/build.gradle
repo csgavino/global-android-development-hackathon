@@ -44,6 +44,7 @@ androidAnnotationsVersion = '2.2'
 def commonsCodecVersion = '1.4'
 def fluxdroidVersion = '0.2.0'
 def mockitoVersion = '1.8.5'
+def commonsIoVersion = '2.1'
 
 dependencies {
     compile fileTree(dir: 'libs', include: '*.jar')
@@ -56,6 +57,7 @@ dependencies {
     compile "org.slf4j:slf4j-api:1.6.4"
     compile "org.slf4j:slf4j-simple:1.6.4"
     compile "commons-codec:commons-codec:$commonsCodecVersion"
+    compile "commons-io:commons-io:$commonsIoVersion"
     testCompile("com.google.android:android:$androidVersion") {
         provided = true
     }
