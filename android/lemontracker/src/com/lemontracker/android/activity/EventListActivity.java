@@ -45,7 +45,7 @@ public class EventListActivity extends Activity {
     @Background
     public void fetchEntries() {
         try {
-            String URL = events(3L);
+            String URL = allEvents();
             Event[] result = getRestTemplate().getForObject(URL, Event[].class);
             processResult(new Result<ArrayList<Event>>(new ArrayList<Event>(asList(result))));
         } catch (RestClientException e) {

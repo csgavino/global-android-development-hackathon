@@ -9,6 +9,7 @@ public class WebService {
     private static final String CATEGORIES = "http://{0}:{1}/services/categories/";
     private static final String EVENTS = "http://{0}:{1}/services/categories/{2}/events/";
     private static final String EVENT = "http://{0}:{1}/services/events/{2}/";
+    private static final String ALL_EVENTS = "http://{0}:{1}/services/events/";
     private static final String BANNER = "http://{0}:{1}/{2}/";
 
     public static String category(Long id) {
@@ -29,6 +30,10 @@ public class WebService {
 
     public static String image(String PATH) {
         return format(BANNER, BASE_URL, PORT, PATH);
+    }
+
+    public static String allEvents() {
+        return format(ALL_EVENTS, BASE_URL, PORT);
     }
 
 }
