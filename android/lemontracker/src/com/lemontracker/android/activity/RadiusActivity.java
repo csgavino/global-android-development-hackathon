@@ -89,20 +89,19 @@ public class RadiusActivity extends MapActivity {
         }
     }
 
+    private GeoPoint getCenter() {
+        int latE6 = (int) (latitude * 1e6);
+        int lonE6 = (int) (longitude * 1e6);
+        return new GeoPoint(latE6, lonE6);
+    }
+
     private void parseResults(List<Event> events) {
         if (!events.isEmpty()) {
-            GeoPoint center = new GeoPoint(
-                    (int) (latitude * 1e6),
-                    (int) (longitude * 1e6)
-            );
-
-            mapview.getController().setCenter(center);
+            mapview.getController().setCenter(getCenter());
 
             for (Event event : events) {
                 int latE6 = (int) (event.getLatitude() * 1e6);
                 int lonE6 = (int) (event.getLongitude() * 1e6);
-                Log.e(TAG, "Hello " + event.getLatitude());
-                Log.e(TAG, "Hello " + event.getLongitude());
                 GeoPoint point = new GeoPoint(latE6, lonE6);
                 OverlayItem overlayitem = new OverlayItem(point, "", "");
                 itemizedOverlay.addOverlay(overlayitem);
@@ -114,6 +113,5 @@ public class RadiusActivity extends MapActivity {
             Log.e(TAG, "No Results");
         }
     }
-
 
 }
