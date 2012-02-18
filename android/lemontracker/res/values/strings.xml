@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MainActivity</string>
+    <string name="fake_latin">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus porttitor tortor in lorem
+        fringilla nec consectetur nulla venenatis. Pellentesque sed ipsum ipsum.
+        \n\nMorbi quis nisi velit, eget tempor arcu. Donec blandit, purus at vehicula semper, justo nulla aliquet nisl, id congue neque mi sit amet orci. Nulla
+        facilisi. Integer et metus arcu. Mauris rhoncus, orci ac congue feugiat, odio quam vestibulum mi, eget porta
+        felis turpis sed diam.
+    </string>
 </resources>

@@ -45,7 +45,7 @@ public class DashboardActivity extends Activity {
 
     @Click(R.id.today)
     public void todayCellClicked() {
-        Intent i = new Intent(this, TodayActivity.class);
+        Intent i = new Intent(this, TodayActivity_.class);
         startActivity(i);
     }
 

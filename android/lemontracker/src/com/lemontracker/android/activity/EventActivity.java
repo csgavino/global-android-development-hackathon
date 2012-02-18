@@ -1,20 +1,21 @@
 package com.lemontracker.android.activity;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
+import com.googlecode.androidannotations.annotations.Click;
 import com.googlecode.androidannotations.annotations.EActivity;
 import com.lemontracker.android.R;
 
 @EActivity
-public class TodayActivity extends Activity {
+public class EventActivity extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.today_layout);
-        Intent i = new Intent(this, EventActivity_.class);
-        startActivity(i);
+        setContentView(R.layout.event_layout);
     }
 
+    @Click(R.id.map)
+    public void mapCellClicked() {
+    }
 }
