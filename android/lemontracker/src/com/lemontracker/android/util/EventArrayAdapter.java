@@ -15,12 +15,17 @@ import com.teamcodeflux.android.Result;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static com.lemontracker.android.WebService.*;
 import static com.lemontracker.android.util.IOUtils.*;
 
 public class EventArrayAdapter extends ArrayAdapter<Event> {
+    private static final String TAG = EventArrayAdapter.class.getSimpleName();
+
+    private static Map<Long, Bitmap> keyedBitmap = new HashMap<Long, Bitmap>();
 
     public EventArrayAdapter(Context context, int id, List<Event> events) {
         super(context, id, events);
@@ -38,7 +43,15 @@ public class EventArrayAdapter extends ArrayAdapter<Event> {
         Event event = getItem(position);
 
         ImageView icon = (ImageView) row.findViewById(R.id.image);
-        new LoadContentTask().execute(event, icon);
+        icon.setVisibility(View.INVISIBLE);
+
+        Bitmap bitmap = keyedBitmap.get(event.getId());
+        if (bitmap == null) {
+            new LoadContentTask().execute(event, icon);
+        } else {
+            icon.setVisibility(View.VISIBLE);
+            icon.setImageBitmap(bitmap);
+        }
 
         TextView name = (TextView) row.findViewById(R.id.header);
         name.setText(event.getName());
@@ -72,8 +85,9 @@ public class EventArrayAdapter extends ArrayAdapter<Event> {
 
         protected void onPostExecute(Result<Bitmap> result) {
             if (!result.hasErrors()) {
+                keyedBitmap.put(event.getId(), result.getResult());
+                view.setVisibility(View.VISIBLE);
                 view.setImageBitmap(result.getResult());
-                view.postInvalidate();
             }
         }
 
