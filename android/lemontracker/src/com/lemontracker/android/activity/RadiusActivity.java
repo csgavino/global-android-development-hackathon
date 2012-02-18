@@ -2,6 +2,7 @@ package com.lemontracker.android.activity;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
@@ -30,17 +31,23 @@ import static java.util.Arrays.*;
 @EActivity(R.layout.map_layout)
 public class RadiusActivity extends MapActivity {
     private static final String TAG = RadiusActivity.class.getSimpleName();
+    private static final int WAIT_TIME = 5000;
 
+    private int executions;
     private Float latitude = new Float("14.620748");
     private Float longitude = new Float("121.053451");
+    private String transId = "23737294091789509982012021904024325";
     private MapItemizedOverlay itemizedOverlay;
     private List<Overlay> mapOverlays;
     private Drawable drawable;
     private MapView mapview;
+    private Handler updateHandler = new Handler();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // This is a manual call and should be removed
+        updateHandler.postDelayed(updateCoordsTask, WAIT_TIME);
     }
 
     @AfterViews
@@ -55,7 +62,7 @@ public class RadiusActivity extends MapActivity {
     @Override
     public void onResume() {
         super.onResume();
-        fetchEvents();
+        executions = 0;
     }
 
     @Override
@@ -79,6 +86,40 @@ public class RadiusActivity extends MapActivity {
         }
     }
 
+    private GeoPoint getCenter() {
+        int latE6 = (int) (latitude * 1e6);
+        int lonE6 = (int) (longitude * 1e6);
+        return new GeoPoint(latE6, lonE6);
+    }
+
+    @Background
+    public void requestUpdates() {
+        try {
+            MultiValueMap<String, Float> map = new LinkedMultiValueMap<String, Float>();
+            transId = getRestTemplate().postForObject(locate(), map, String.class);
+
+            updateHandler.postDelayed(updateCoordsTask, WAIT_TIME);
+        } catch (RestClientException e) {
+            Log.e(TAG, e.toString());
+        }
+    }
+
+    private Runnable updateCoordsTask = new Runnable() {
+        @Override
+        public void run() {
+            try {
+                Log.e(TAG, "Updating coords");
+                MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
+                map.add("transaction_id", transId);
+
+                Event[] result = getRestTemplate().postForObject(locations(), map, Event[].class);
+                processResult(new Result<ArrayList<Event>>(new ArrayList<Event>(asList(result))));
+            } catch (RestClientException e) {
+                Log.e(TAG, e.toString());
+            }
+        }
+    };
+
     @UiThread
     public void processResult(Result result) {
         if (!result.hasErrors()) {
@@ -87,28 +128,31 @@ public class RadiusActivity extends MapActivity {
         }
     }
 
-    private GeoPoint getCenter() {
-        int latE6 = (int) (latitude * 1e6);
-        int lonE6 = (int) (longitude * 1e6);
-        return new GeoPoint(latE6, lonE6);
-    }
-
     private void parseResults(List<Event> events) {
         if (!events.isEmpty()) {
             mapview.getController().setCenter(getCenter());
-
-            for (Event event : events) {
-                int latE6 = (int) (event.getLatitude() * 1e6);
-                int lonE6 = (int) (event.getLongitude() * 1e6);
-                GeoPoint point = new GeoPoint(latE6, lonE6);
-                OverlayItem overlayitem = new OverlayItem(point, "", "");
-                itemizedOverlay.addOverlay(overlayitem);
-            }
-
-            mapOverlays.add(itemizedOverlay);
-
+            fillOverlay(events);
         } else {
             Log.e(TAG, "No Results");
+            reupdateCoords();
+        }
+    }
+
+    private void fillOverlay(List<Event> events) {
+        for (Event event : events) {
+            int latE6 = (int) (event.getLatitude() * 1e6);
+            int lonE6 = (int) (event.getLongitude() * 1e6);
+            GeoPoint point = new GeoPoint(latE6, lonE6);
+            OverlayItem overlayitem = new OverlayItem(point, "", "");
+            itemizedOverlay.addOverlay(overlayitem);
+        }
+        mapOverlays.add(itemizedOverlay);
+    }
+
+    private void reupdateCoords() {
+        if (executions < 10) {
+            updateHandler.postDelayed(updateCoordsTask, WAIT_TIME);
+            executions++;
         }
     }
 
