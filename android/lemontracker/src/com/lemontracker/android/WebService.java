@@ -28,7 +28,7 @@ public class WebService {
     }
 
     public static String image(String PATH) {
-        return format(IMAGE, BASE_URL, PATH);
+        return format(IMAGE, BASE_URL, PORT, PATH);
     }
 
 }
