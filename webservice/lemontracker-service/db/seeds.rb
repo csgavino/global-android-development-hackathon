@@ -60,10 +60,10 @@ Event.create( :name => "PENSHOPPE Trinoma Sale",
               :category_id => 3)
 
 Event.create( :name => "Status Magazine Yard Sale", 
-              :description => "Status Magazine yard sale at Embassy in The Fort, Taguig on August 1, 2012. Entrance fee is Php100 and the sale is open from 11am to 7pm.", 
-              :blurb => "Status Magazine yard sale at Embassy in The Fort, Taguig on August 1, 2012.",
-              :date_start => DateTime.civil(2012, 8, 1, 11, 0, 0).in_time_zone('Asia/Taipei'), 
-              :date_end => DateTime.civil(2012, 8, 1, 19, 0, 0).in_time_zone('Asia/Taipei'), 
+              :description => "Status Magazine yard sale at Embassy in The Fort, Taguig on February 15-21, 2012. Entrance fee is Php100 and the sale is open from 11am to 7pm.", 
+              :blurb => "Status Magazine yard sale at Embassy in The Fort, Taguig on February 15-21, 2012.",
+              :date_start => DateTime.civil(2012, 2, 15, 11, 0, 0).in_time_zone('Asia/Taipei'), 
+              :date_end => DateTime.civil(2012, 2, 21, 19, 0, 0).in_time_zone('Asia/Taipei'), 
               :thumb_url => "images/thumbs/5.jpg", 
               :image_url => "images/event_banners/5.jpg", 
               :longitude => 121.047894,
@@ -108,10 +108,10 @@ Event.create( :name => "Toyota Tent Event",
               
               
 Event.create( :name => "McDonalds Free Coffee", 
-              :description => "Get a free 8 oz. McCafe Premium Roast Coffee from February 8 to 21 2012 at any McDonalds breakfast store from 4:00 a.m. to 10:30 a.m.
+              :description => "Get a free 8 oz. McCafe Premium Roast Coffee from February 16 to 21 2012 at any McDonalds breakfast store from 4:00 a.m. to 10:30 a.m.
                 Be on the lookout for the McDonalds crew who will distribute the coupons in selected offices, universities, colleges, terminals, churches and even outside the McDonalds stores nationwide starting August 5!",
-              :blurb => "Get a free 8 oz. McCafe Premium Roast Coffee from February 8 to 21 2012 at any McDonalds breakfast store from 4:00 a.m. to 10:30 a.m.",
-              :date_start => DateTime.civil(2012, 2, 8, 4, 0, 0).in_time_zone('Asia/Taipei'), 
+              :blurb => "Get a free 8 oz. McCafe Premium Roast Coffee from February 16 to 21 2012 at any McDonalds breakfast store from 4:00 a.m. to 10:30 a.m.",
+              :date_start => DateTime.civil(2012, 2, 16, 4, 0, 0).in_time_zone('Asia/Taipei'), 
               :date_end => DateTime.civil(2012, 2, 21, 10, 30, 0).in_time_zone('Asia/Taipei'), 
               :thumb_url => "images/thumbs/8.jpg", 
               :image_url => "images/event_banners/8.jpg", 

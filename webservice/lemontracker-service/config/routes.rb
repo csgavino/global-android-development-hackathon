@@ -18,6 +18,15 @@ LemontrackerService::Application.routes.draw do
   
   post 'services/search/location'  =>  "service#events_search_location"
   
+  post 'services/soap/register' => "service#soap_register"
+  
+  post 'services/soap/locate' => "service#soap_locate"
+  
+  post 'services/soap' => "service#soap_save_location"
+  
+  #get 'services/locations/:transaction_id' =>  "service#locations_show"
+  
+  post 'services/locations/'  =>  "service#locations_show"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

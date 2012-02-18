@@ -8,6 +8,7 @@ group :development do
   gem 'rspec-rails', '2.8.1'
   gem 'guard-rspec', '0.5.5'
   gem "haml-rails", '0.3.4'
+  gem 'savon', '0.9.9'
 end
 
 # Gems used only for assets and not required
