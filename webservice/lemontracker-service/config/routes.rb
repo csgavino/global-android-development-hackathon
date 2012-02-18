@@ -6,6 +6,8 @@ LemontrackerService::Application.routes.draw do
  
   get 'services/categories/:id/events' =>  "service#category_events" 
  
+  get 'services/events' => "service#events_index"
+  
   get 'services/events/:id' =>  "service#events_show"
   
   get 'services/radius_test'  => "service#radius_test"

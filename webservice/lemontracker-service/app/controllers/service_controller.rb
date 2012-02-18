@@ -44,6 +44,10 @@ class ServiceController < ApplicationController
     render :json  => events
   end
   
+  def events_index
+      events = Event.all
+      render :json  => events
+  end
   
   def events_show
       event = Event.find_by_id(params[:id])
