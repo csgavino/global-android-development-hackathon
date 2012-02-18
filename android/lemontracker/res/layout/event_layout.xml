@@ -3,7 +3,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             style="@style/scrollContainer">
 
-    <RelativeLayout style="@style/parentContainer">
+    <RelativeLayout style="@style/parentContainer"
+                    android:background="@color/cellBackground">
 
         <include android:id="@+id/actionbar" layout="@layout/actionbar_layout"/>
 
