@@ -154,7 +154,8 @@ public class DashboardActivity extends Activity {
 
     @Click(R.id.others)
     public void othersCellClicked() {
-
+        Intent i = new Intent(this, OthersActivity_.class);
+        startActivity(i);
     }
 
 }

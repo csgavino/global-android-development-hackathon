@@ -21,6 +21,7 @@
         <activity android:name=".activity.PartiesActivity_"/>
         <activity android:name=".activity.ConcertsActivity_"/>
         <activity android:name=".activity.SalesActivity_"/>
+        <activity android:name=".activity.OthersActivity_"/>
 
     </application>
 
