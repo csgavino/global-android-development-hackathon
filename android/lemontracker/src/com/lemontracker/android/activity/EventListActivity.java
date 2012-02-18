@@ -27,7 +27,6 @@ import static java.util.Arrays.*;
 @EActivity(R.layout.list_layout)
 public class EventListActivity extends Activity {
     protected static final String TAG = EventListActivity.class.getSimpleName();
-    protected List<Event> events;
 
     @ViewById(R.id.__list)
     ListView list;
