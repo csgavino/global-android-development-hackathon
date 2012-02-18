@@ -13,7 +13,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.ListActivity"/>
+        <activity android:name=".activity.EventsActivity"/>
         <activity android:name=".activity.SearchActivity"/>
         <activity android:name=".activity.TodayActivity_"/>
         <activity android:name=".activity.EventActivity_"/>

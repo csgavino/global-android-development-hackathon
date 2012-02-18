@@ -33,7 +33,7 @@ public class DashboardActivity extends Activity {
 
     @Click(R.id.listButton)
     public void listButtonClicked() {
-        Intent i = new Intent(this, ListActivity.class);
+        Intent i = new Intent(this, EventsActivity.class);
         startActivity(i);
     }
 
