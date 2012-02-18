@@ -7,10 +7,10 @@ public class User implements Parcelable {
     private Long id;
     private String name;
 
-    public static User createUser(final String name) {
-        User cat = new User();
-        cat.name = name;
-        return cat;
+    public static User buildUser(final String name) {
+        User user = new User();
+        user.name = name;
+        return user;
     }
 
     public static final Parcelable.Creator<User> CREATOR = new Parcelable.Creator<User>() {
