@@ -50,8 +50,8 @@ public class EventViewActivity extends Activity {
     @Override
     public void onResume() {
         super.onResume();
-        retrieveEntry();
-        retrieveBanner();
+        fetchEntry();
+        fetchBanner();
     }
 
     @AfterViews
@@ -67,7 +67,7 @@ public class EventViewActivity extends Activity {
     }
 
     @Background
-    public void retrieveEntry() {
+    public void fetchEntry() {
         try {
             String URL = category(event.getCategoryId());
             Category result = getRestTemplate().getForObject(URL, Category.class);
@@ -89,9 +89,9 @@ public class EventViewActivity extends Activity {
     }
 
     @Background
-    public void retrieveBanner() {
+    public void fetchBanner() {
         try {
-            String URL = banner(event.getImageURL());
+            String URL = image(event.getImageURL());
             Bitmap bitmap = loadImageFromURL(new URL(URL));
             renderBanner(bitmap);
         } catch (Exception e) {
