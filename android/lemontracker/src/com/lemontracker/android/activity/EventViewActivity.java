@@ -90,11 +90,11 @@ public class EventViewActivity extends Activity {
     @Background
     public void retrieveBanner() {
         try {
-            String URL = image(event.getImageURL());
+            String URL = banner(event.getImageURL());
             Bitmap bitmap = loadImageFromURL(new URL(URL));
             renderBanner(bitmap);
         } catch (Exception e) {
-            Log.e(TAG, "Failed to render image");
+            Log.e(TAG, "Failed to render banner");
         }
     }
 
