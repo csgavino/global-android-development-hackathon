@@ -3,6 +3,7 @@ package com.lemontracker.android.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.annotate.JsonProperty;
 
 @JsonIgnoreProperties({
         "event"
@@ -10,6 +11,8 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 public class Category implements Parcelable {
     private Long id;
     private String name;
+    @JsonProperty("image_url")
+    private String imageUrl;
 
     public static Category buildCategory(final String name) {
         Category cat = new Category();
@@ -50,6 +53,14 @@ public class Category implements Parcelable {
 
     public void setName(final String name) {
         this.name = name;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public static Parcelable.Creator<Category> getCreator() {
