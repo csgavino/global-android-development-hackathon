@@ -50,12 +50,30 @@ class ServiceController < ApplicationController
       render  :json => event
   end
   
+  def events_search
+    data = ActiveSupport::JSON.decode(request.body.string)
+    events = Event.find(:all, :conditions => ['name like ?',  "%"+data['searchstring'] +"%"])
+    render  :json => events 
+    
+  end
+
+  def events_search_location
+    data = ActiveSupport::JSON.decode(request.body.string)
+    events = Event.all
+    response = []
+    i = 0
+    events.each do |event|
+      if in_circle(data['longitude'], data['latitude'], data['radius'], event.longitude, event.latitude)
+        response[i] = event
+        i = i + 1
+      end  
+    end
+    render  :json => response 
+  end
   
   def radius_test
     render  :json => in_circle(0, 0, 50, 36, 36)
   end
-  
-
   
   private
 

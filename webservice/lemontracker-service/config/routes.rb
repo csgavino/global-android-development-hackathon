@@ -10,7 +10,12 @@ LemontrackerService::Application.routes.draw do
   
   get 'services/radius_test'  => "service#radius_test"
   
-  get 'services/today/events' =>"service#category_today"
+  get 'services/today' =>"service#category_today"
+  
+  post 'services/search' => "service#events_search"
+  
+  post 'services/search/location'  =>  "service#events_search_location"
+  
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
