@@ -90,7 +90,6 @@ public class SearchActivity extends Activity {
             ArrayAdapter adapter = new EventArrayAdapter(this, R.layout.list_cell_layout, events);
             list.setAdapter(adapter);
         } else {
-            Log.e(TAG, "Toast!");
             Toast toast = Toast.makeText(SearchActivity.this, "No Results", Toast.LENGTH_LONG);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();

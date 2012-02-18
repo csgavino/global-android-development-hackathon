@@ -1,6 +1,7 @@
 package com.lemontracker.android.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
@@ -64,6 +65,8 @@ public class EventViewActivity extends Activity {
 
     @Click(R.id.map)
     public void mapCellClicked() {
+        Intent i = new Intent(this, EventMapActivity_.class);
+        startActivity(i);
     }
 
     @Background
