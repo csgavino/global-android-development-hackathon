@@ -29,7 +29,7 @@ class ServiceController < ApplicationController
   
   
   def category_events
-    events = Event.find_all_by_category_id(params[:id], :order => "date_start DESC")
+    events = Event.find_all_by_category_id(params[:id], :order => "date_start ASC")
     render :json  => events
   end
   
