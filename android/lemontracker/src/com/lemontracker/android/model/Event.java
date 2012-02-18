@@ -27,7 +27,7 @@ public class Event implements Parcelable {
     private Float latitude;
     private Float longitude;
     @JsonProperty("category_id")
-    private Integer categoryId;
+    private Long categoryId;
     /*
     private Category category;
     private User user;
@@ -212,11 +212,11 @@ public class Event implements Parcelable {
         this.longitude = longitude;
     }
 
-    public Integer getCategoryId() {
+    public Long getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(Integer categoryId) {
+    public void setCategoryId(Long categoryId) {
         this.categoryId = categoryId;
     }
 
