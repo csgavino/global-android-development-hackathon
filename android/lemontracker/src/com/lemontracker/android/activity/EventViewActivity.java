@@ -1,8 +1,10 @@
 package com.lemontracker.android.activity;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.googlecode.androidannotations.annotations.AfterViews;
 import com.googlecode.androidannotations.annotations.Background;
@@ -17,11 +19,15 @@ import com.lemontracker.android.model.Event;
 import com.teamcodeflux.android.Result;
 import org.springframework.web.client.RestClientException;
 
+import java.net.URL;
+
 import static com.lemontracker.android.WebService.*;
+import static com.lemontracker.android.util.IOUtils.*;
 import static com.teamcodeflux.android.RestTemplateFactory.*;
 
 @EActivity(R.layout.event_layout)
 public class EventViewActivity extends Activity {
+    public static String TAG = EventViewActivity.class.getSimpleName();
 
     @Extra("event")
     Event event;
@@ -33,6 +39,8 @@ public class EventViewActivity extends Activity {
     TextView h2;
     @ViewById
     TextView description;
+    @ViewById
+    ImageView banner;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,6 +51,7 @@ public class EventViewActivity extends Activity {
     public void onResume() {
         super.onResume();
         retrieveEntry();
+        retrieveBanner();
     }
 
     @AfterViews
@@ -50,6 +59,7 @@ public class EventViewActivity extends Activity {
         h1.setText(event.getName());
         h2.setText(event.getDateStart().toString());
         description.setText(event.getDescription());
+
     }
 
     @Click(R.id.map)
@@ -60,7 +70,6 @@ public class EventViewActivity extends Activity {
     public void retrieveEntry() {
         try {
             String URL = category(event.getCategoryId());
-            Log.e("CARLOS", URL);
             Category result = getRestTemplate().getForObject(URL, Category.class);
             processResult(new Result(result));
         } catch (RestClientException e) {
@@ -76,6 +85,22 @@ public class EventViewActivity extends Activity {
             Category cat = (Category) result.getResult();
             category.setText(cat.getName());
         }
+    }
+
+    @Background
+    public void retrieveBanner() {
+        try {
+            String URL = image(event.getImageURL());
+            Bitmap bitmap = loadImageFromURL(new URL(URL));
+            renderBanner(bitmap);
+        } catch (Exception e) {
+            Log.e(TAG, "Failed to render image");
+        }
+    }
+
+    @UiThread
+    public void renderBanner(Bitmap bitmap) {
+        banner.setImageBitmap(bitmap);
     }
 
 }

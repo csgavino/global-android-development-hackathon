@@ -2,10 +2,10 @@ package com.lemontracker.android.util;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import org.apache.commons.io.output.ByteArrayOutputStream;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.URL;
 
