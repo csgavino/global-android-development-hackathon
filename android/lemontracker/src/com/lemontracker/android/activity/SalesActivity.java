@@ -1,17 +1,14 @@
 package com.lemontracker.android.activity;
 
-import android.app.Activity;
-import android.os.Bundle;
 import com.googlecode.androidannotations.annotations.EActivity;
-import com.lemontracker.android.R;
+import com.lemontracker.android.base.BaseListActivity_;
+
+import static com.lemontracker.android.WebService.*;
 
 @EActivity
-public class SalesActivity extends Activity {
-
+public class SalesActivity extends BaseListActivity_ {
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_cell_layout);
+    protected String service() {
+        return events(3L);
     }
-
 }
