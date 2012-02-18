@@ -1,5 +1,10 @@
 <resources>
 
+    <style name="mainTheme">
+        <item name="android:colorBackground">@color/white</item>
+        <item name="android:windowBackground">@color/white</item>
+    </style>
+
     <style name="scrollContainer">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
