@@ -14,7 +14,6 @@
 
         <TextView android:id="@+id/category"
                   style="@style/category"
-                  android:text="Sale"
                   android:layout_below="@id/hr1"/>
 
         <TextView android:id="@+id/hr2"
@@ -30,12 +29,10 @@
 
             <TextView android:id="@+id/h1"
                       android:layout_below="@id/banner"
-                      android:text="SM Lipa 3 Day Sale"
                       style="@style/h1"/>
 
             <TextView android:id="@+id/h2"
                       android:layout_below="@id/h1"
-                      android:text="August 18-29, 2012"
                       style="@style/h2"/>
 
             <ImageView android:id="@+id/map"
