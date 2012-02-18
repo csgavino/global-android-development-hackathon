@@ -2,6 +2,7 @@ package com.lemontracker.android.activity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import com.googlecode.androidannotations.annotations.Background;
 import com.googlecode.androidannotations.annotations.Click;
 import com.googlecode.androidannotations.annotations.EActivity;
+import com.googlecode.androidannotations.annotations.ItemClick;
 import com.googlecode.androidannotations.annotations.UiThread;
 import com.googlecode.androidannotations.annotations.ViewById;
 import com.lemontracker.android.R;
@@ -94,6 +96,14 @@ public class SearchActivity extends Activity {
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
         }
+    }
+
+    @ItemClick
+    void __list(Object object) {
+        Intent i = new Intent(this, EventViewActivity_.class);
+        Event event = (Event) object;
+        i.putExtra("event", event);
+        startActivity(i);
     }
 
 }
