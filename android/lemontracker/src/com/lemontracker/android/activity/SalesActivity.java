@@ -6,7 +6,7 @@ import com.googlecode.androidannotations.annotations.EActivity;
 import com.lemontracker.android.R;
 
 @EActivity
-public class ShopsActivity extends Activity {
+public class SalesActivity extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
