@@ -2,7 +2,11 @@ package com.lemontracker.android.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
+@JsonIgnoreProperties({
+        "event"
+})
 public class Category implements Parcelable {
     private Long id;
     private String name;
