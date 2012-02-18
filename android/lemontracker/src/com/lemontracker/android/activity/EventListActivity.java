@@ -22,7 +22,7 @@ import static com.lemontracker.android.WebService.*;
 import static com.teamcodeflux.android.RestTemplateFactory.*;
 import static java.util.Arrays.*;
 
-@EActivity
+@EActivity(R.layout.list_layout)
 public class EventListActivity extends Activity {
     protected static final String TAG = EventListActivity.class.getSimpleName();
     protected List<Event> events;
@@ -33,7 +33,7 @@ public class EventListActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_layout);
+//        setContentView(R.layout.list_layout);
     }
 
     @Override
@@ -64,10 +64,8 @@ public class EventListActivity extends Activity {
         }
     }
 
-    /*
-    @ItemClick(R.id.__list)
-    public void listCellClicked(Event event) {
-        System.out.println("Hello");
+    @ItemClick
+    void __list(Object object) {
+        Event event = (Event) object;
     }
-    */
 }
