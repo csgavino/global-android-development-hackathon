@@ -12,12 +12,13 @@
                 android:shrinkColumns="*"
                 android:layout_centerInParent="true"
                 android:layout_below="@id/actionbar"
+                android:layout_margin="4dip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
             <TableRow>
                 <ImageView android:id="@+id/today"
-                           android:background="#3300FF"
+                           android:scaleType="fitXY"
                            android:layout_span="2"
                            android:layout_margin="4dip"
                            android:layout_width="wrap_content"
@@ -26,13 +27,13 @@
 
             <TableRow>
                 <ImageView android:id="@+id/restaurants"
-                           android:background="#99CC00"
+                           android:scaleType="fitXY"
                            android:layout_margin="4dip"
                            android:layout_width="192dip"
                            android:layout_height="192dip"/>
 
                 <ImageView android:id="@+id/sales"
-                           android:background="#99CC00"
+                           android:scaleType="fitXY"
                            android:layout_margin="4dip"
                            android:layout_width="192dip"
                            android:layout_height="192dip"/>
@@ -40,13 +41,13 @@
 
             <TableRow>
                 <ImageView android:id="@+id/concerts"
-                           android:background="#3300FF"
+                           android:scaleType="fitXY"
                            android:layout_margin="4dip"
                            android:layout_width="192dip"
                            android:layout_height="192dip"/>
 
                 <ImageView android:id="@+id/parties"
-                           android:background="#3399FF"
+                           android:scaleType="fitXY"
                            android:layout_margin="4dip"
                            android:layout_width="192dip"
                            android:layout_height="192dip"/>
@@ -54,10 +55,10 @@
 
             <TableRow>
                 <ImageView android:id="@+id/others"
-                           android:background="#3300FF"
+                           android:scaleType="fitXY"
                            android:layout_span="2"
                            android:layout_margin="4dip"
-                           android:layout_width="384dip"
+                           android:layout_width="wrap_content"
                            android:layout_height="192dip"/>
             </TableRow>
 
