@@ -5,25 +5,45 @@ class ServiceController < ApplicationController
     categories = Category.all
     response = []
     i = 0
+    
+    date_today = DateTime.now.in_time_zone('Asia/Taipei')
+    event = Event.find(:first, 
+        :conditions => 
+        ["date_start <= ? AND date_end >= ?", date_today, date_today]
+        )
+        cat = { :id => 0, :name => "Today", :image_url => event.image_url}
+    response[i] = cat
+    i = i + 1
+    
     categories.each do |category|
-      events = Event.select("image_url").where(:category_id => category.id)
-      event = events.last
-      cat = { :id => category.id, :name => category.name, :event => event}
-      #cat['id'] =>  category.id
+      cat = nil
+      event = Event.find_by_category_id(category.id, :order => "date_start ASC")
+    
+      cat = { :id => category.id, :name => category.name}
+      
+      if event != nil
+        if category.id == 5
+          cat = { :id => category.id, :name => category.name, :image_url => event.image_url}
+        else
+          cat = { :id => category.id, :name => category.name, :image_url => event.thumb_url}
+        end
+      end
+      
       response[i] = cat
       i = i + 1
+      
     end
-
     render :json  =>  response
   end
   
   
   def category_show
     category = Category.find_by_id(params[:id])
-    events = Event.select("image_url").where(:category_id => category.id)
-    event = events.last
-    
-    response = { :id => category.id, :name => category.name, :event => event}
+    event = Event.find_by_category_id(category.id, :order => "date_start ASC")
+    response = { :id => category.id, :name => category.name}
+    if event != nil
+      response = { :id => category.id, :name => category.name, :image_url => event.thumb_url}
+    end
     render :json  => response
   end
   
