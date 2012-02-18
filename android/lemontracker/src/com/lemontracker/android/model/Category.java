@@ -7,7 +7,7 @@ public class Category implements Parcelable {
     private Long id;
     private String name;
 
-    public static Category createCategory(final String name) {
+    public static Category buildCategory(final String name) {
         Category cat = new Category();
         cat.name = name;
         return cat;
