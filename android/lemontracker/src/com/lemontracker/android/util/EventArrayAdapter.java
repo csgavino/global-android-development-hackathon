@@ -75,7 +75,7 @@ public class EventArrayAdapter extends ArrayAdapter<Event> {
             view = (ImageView) arg[1];
 
             try {
-                String thumbnailURL = thumb(this.event.getThumbnailURL());
+                String thumbnailURL = image(this.event.getThumbnailURL());
                 Bitmap bitmap = loadImageFromURL(new URL(thumbnailURL));
                 return new Result<Bitmap>(bitmap);
             } catch (IOException e) {
