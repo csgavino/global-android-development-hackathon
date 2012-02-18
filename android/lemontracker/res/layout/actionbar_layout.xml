@@ -21,6 +21,11 @@
             android:background="@drawable/search_drawable"
             style="@style/button"/>
 
+    <Button android:id="@+id/radiusButton"
+            android:layout_toLeftOf="@id/searchButton"
+            android:background="@drawable/radius_drawable"
+            style="@style/button"/>
+
     <LinearLayout android:id="@+id/borderContainer"
                   android:layout_below="@id/listButton"
                   android:layout_width="fill_parent"
