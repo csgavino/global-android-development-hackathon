@@ -3,17 +3,38 @@ package com.lemontracker.android.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
+import com.googlecode.androidannotations.annotations.AfterViews;
 import com.googlecode.androidannotations.annotations.Click;
 import com.googlecode.androidannotations.annotations.EActivity;
+import com.googlecode.androidannotations.annotations.ViewById;
 import com.lemontracker.android.R;
 
 @EActivity
 public class DashboardActivity extends Activity {
+    public static String TAG = DashboardActivity.class.getSimpleName();
+    @ViewById
+    ImageView today;
+    @ViewById
+    ImageView restaurants;
+    @ViewById
+    ImageView shops;
+    @ViewById
+    ImageView concerts;
+    @ViewById
+    ImageView parties;
+    @ViewById
+    ImageView others;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dashboard_layout);
+    }
+
+    @AfterViews
+    public void afterCreate() {
+
     }
 
     @Click(R.id.listButton)
