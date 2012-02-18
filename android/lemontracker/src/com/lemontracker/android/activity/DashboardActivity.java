@@ -129,14 +129,27 @@ public class DashboardActivity extends Activity {
         startActivity(i);
     }
 
+    @Click(R.id.restaurants)
+    public void restaurantsCellClicked() {
+    }
+
     @Click(R.id.sales)
     public void salesCellClicked() {
-        Intent i = new Intent(this, ShopsActivity_.class);
+        Intent i = new Intent(this, SalesActivity_.class);
         startActivity(i);
     }
 
-    @Click(R.id.restaurants)
-    public void restaurantsCellClicked() {
+    @Click(R.id.concerts)
+    public void concertsCellClicked() {
+    }
+
+    @Click(R.id.parties)
+    public void partiesCellClicked() {
+
+    }
+
+    @Click(R.id.others)
+    public void othersCellClicked() {
 
     }
 
