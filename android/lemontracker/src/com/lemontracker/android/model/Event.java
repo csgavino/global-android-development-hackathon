@@ -14,6 +14,7 @@ public class Event implements Parcelable {
     private Date dateStart;
     private Date dateEnd;
     private Category category;
+    private User user;
 
     @Override
     public int describeContents() {
@@ -30,6 +31,7 @@ public class Event implements Parcelable {
         parcel.writeSerializable(dateStart);
         parcel.writeSerializable(dateEnd);
         parcel.writeParcelable(category, i);
+        parcel.writeParcelable(user, i);
     }
 
     private void readFromParcel(final Parcel source) {
@@ -41,6 +43,7 @@ public class Event implements Parcelable {
         dateStart = (Date) source.readSerializable();
         dateEnd = (Date) source.readSerializable();
         category = source.readParcelable(Category.class.getClassLoader());
+        user = source.readParcelable(User.class.getClassLoader());
     }
 
     public static final Parcelable.Creator<Event> CREATOR = new Parcelable.Creator<Event>() {
