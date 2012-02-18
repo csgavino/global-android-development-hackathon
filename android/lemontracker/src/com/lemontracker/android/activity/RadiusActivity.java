@@ -31,13 +31,12 @@ import static java.util.Arrays.*;
 public class RadiusActivity extends MapActivity {
     private static final String TAG = RadiusActivity.class.getSimpleName();
 
-    Float latitude = new Float("14.620748");
-    Float longitude = new Float("121.053451");
-
-    MapItemizedOverlay itemizedOverlay;
-    List<Overlay> mapOverlays;
-    Drawable drawable;
-    MapView mapview;
+    private Float latitude = new Float("14.620748");
+    private Float longitude = new Float("121.053451");
+    private MapItemizedOverlay itemizedOverlay;
+    private List<Overlay> mapOverlays;
+    private Drawable drawable;
+    private MapView mapview;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,7 +55,6 @@ public class RadiusActivity extends MapActivity {
     @Override
     public void onResume() {
         super.onResume();
-        // You need to feed this function with your current lat, lon
         fetchEvents();
     }
 
