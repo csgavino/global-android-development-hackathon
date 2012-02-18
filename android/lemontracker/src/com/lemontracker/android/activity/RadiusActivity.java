@@ -46,8 +46,9 @@ public class RadiusActivity extends MapActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestUpdates();
         // This is a manual call and should be removed
-        updateHandler.postDelayed(updateCoordsTask, WAIT_TIME);
+        // updateHandler.postDelayed(updateCoordsTask, WAIT_TIME);
     }
 
     @AfterViews
