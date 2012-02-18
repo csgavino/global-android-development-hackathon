@@ -22,11 +22,15 @@
         <activity android:name=".activity.ConcertsActivity_"/>
         <activity android:name=".activity.SalesActivity_"/>
         <activity android:name=".activity.OthersActivity_"/>
+        <activity android:name=".activity.EventMapActivity"/>
         <activity android:name=".activity.EventMapActivity_"/>
+
+        <uses-library android:name="com.google.android.maps"/>
 
     </application>
 
     <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="8"/>
+
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
