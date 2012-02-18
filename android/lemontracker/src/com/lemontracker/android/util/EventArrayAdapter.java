@@ -88,6 +88,7 @@ public class EventArrayAdapter extends ArrayAdapter<Event> {
                 keyedBitmap.put(event.getId(), result.getResult());
                 view.setVisibility(View.VISIBLE);
                 view.setImageBitmap(result.getResult());
+                view.invalidate();
             }
         }
 
