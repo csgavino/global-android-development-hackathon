@@ -45,8 +45,9 @@ public class EventMapActivity extends MapActivity {
         int lonE6 = (int) (event.getLongitude() * 1e6);
 
         GeoPoint point = new GeoPoint(latE6, lonE6);
-        OverlayItem overlayitem = new OverlayItem(point, "", "");
+        mapview.getController().setCenter(point);
 
+        OverlayItem overlayitem = new OverlayItem(point, "", "");
         itemizedOverlay.addOverlay(overlayitem);
         mapOverlays.add(itemizedOverlay);
     }
