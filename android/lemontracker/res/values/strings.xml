@@ -13,4 +13,7 @@
         lorem
         fringilla nec consectetur nulla venenatis. Pellentesque sed ipsum ipsum.
     </string>
+
+    <string name="debug_api_key">0iue64lS5zfqmt6WIcUR8jGK7eCPNy16_HR3YXw</string>
+
 </resources>
