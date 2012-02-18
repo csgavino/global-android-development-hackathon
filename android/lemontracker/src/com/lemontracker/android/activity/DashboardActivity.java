@@ -143,6 +143,7 @@ public class DashboardActivity extends Activity {
 
     @Click(R.id.concerts)
     public void concertsCellClicked() {
+        Intent i = new Intent(this, ConcertsActivity_.class);
     }
 
     @Click(R.id.parties)
