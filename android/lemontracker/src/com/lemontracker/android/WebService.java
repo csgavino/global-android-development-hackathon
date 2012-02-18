@@ -11,6 +11,7 @@ public class WebService {
     private static final String EVENT = "http://{0}:{1}/services/events/{2}/";
     private static final String ALL_EVENTS = "http://{0}:{1}/services/events/";
     private static final String BANNER = "http://{0}:{1}/{2}/";
+    private static final String SEARCH = "http://{0}:{1}/services/search/";
 
     public static String category(Long id) {
         return format(CATEGORY, BASE_URL, PORT, id);
@@ -34,6 +35,10 @@ public class WebService {
 
     public static String allEvents() {
         return format(ALL_EVENTS, BASE_URL, PORT);
+    }
+
+    public static String search() {
+        return format(SEARCH, BASE_URL, PORT);
     }
 
 }
