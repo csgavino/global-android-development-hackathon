@@ -2,20 +2,35 @@ package com.lemontracker.android.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.annotate.JsonProperty;
 
 import java.util.Date;
 
+@JsonIgnoreProperties({
+        "category_id",
+        "created_at",
+        "updated_at"
+})
 public class Event implements Parcelable {
     private Long id;
     private String name;
     private String blurb;
     private String description;
+    @JsonProperty("image_url")
     private String imageURL;
+    @JsonProperty("thumb_url")
     private String thumbnailURL;
+    @JsonProperty("date_start")
     private Date dateStart;
+    @JsonProperty("date_end")
     private Date dateEnd;
+    private Float latitude;
+    private Float longitude;
+    /*
     private Category category;
     private User user;
+    */
 
     private Event() {
     }
@@ -57,8 +72,10 @@ public class Event implements Parcelable {
         parcel.writeString(thumbnailURL);
         parcel.writeSerializable(dateStart);
         parcel.writeSerializable(dateEnd);
+        /*
         parcel.writeParcelable(category, i);
         parcel.writeParcelable(user, i);
+        */
     }
 
     private void readFromParcel(final Parcel source) {
@@ -70,8 +87,10 @@ public class Event implements Parcelable {
         thumbnailURL = source.readString();
         dateStart = (Date) source.readSerializable();
         dateEnd = (Date) source.readSerializable();
+        /*
         category = source.readParcelable(Category.class.getClassLoader());
         user = source.readParcelable(User.class.getClassLoader());
+        */
     }
 
     public static final Parcelable.Creator<Event> CREATOR = new Parcelable.Creator<Event>() {
@@ -158,6 +177,7 @@ public class Event implements Parcelable {
         this.dateEnd = dateEnd;
     }
 
+    /*
     public Category getCategory() {
         return category;
     }
@@ -165,4 +185,30 @@ public class Event implements Parcelable {
     public void setCategory(Category category) {
         this.category = category;
     }
+
+    public User getUser() {
+        return User;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+    */
+
+    public Float getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Float latitude) {
+        this.latitude = latitude;
+    }
+
+    public Float getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Float longitude) {
+        this.longitude = longitude;
+    }
+
 }
