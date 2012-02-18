@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import com.googlecode.androidannotations.annotations.AfterViews;
 import com.googlecode.androidannotations.annotations.Background;
 import com.googlecode.androidannotations.annotations.EActivity;
@@ -32,13 +33,22 @@ public abstract class BaseListActivity extends Activity {
 
     @ViewById(R.id.__list)
     ListView list;
+    @ViewById
+    TextView category;
 
     @AfterViews
     public void afterCreate() {
         fetchEntries();
+        setHeader();
     }
 
     protected abstract String service();
+
+    private void setHeader() {
+        category.setText(header());
+    }
+
+    protected abstract String header();
 
     @Background
     public void fetchEntries() {

@@ -11,4 +11,9 @@ public class PartiesActivity extends BaseListActivity_ {
     protected String service() {
         return events(4L);
     }
+
+    @Override
+    protected String header() {
+        return "Parties";
+    }
 }

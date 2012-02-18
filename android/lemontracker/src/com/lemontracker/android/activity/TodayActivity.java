@@ -11,4 +11,9 @@ public class TodayActivity extends BaseListActivity_ {
     protected String service() {
         return events(0L);
     }
+
+    @Override
+    protected String header() {
+        return "Today";
+    }
 }

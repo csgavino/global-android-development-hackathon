@@ -11,4 +11,9 @@ public class RestaurantsActivity extends BaseListActivity_ {
     protected String service() {
         return events(2L);
     }
+
+    @Override
+    protected String header() {
+        return "Restaurants";
+    }
 }

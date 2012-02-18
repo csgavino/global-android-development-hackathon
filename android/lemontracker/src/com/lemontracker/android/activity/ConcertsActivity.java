@@ -12,4 +12,9 @@ public class ConcertsActivity extends BaseListActivity_ {
     protected String service() {
         return events(1L);
     }
+
+    @Override
+    protected String header() {
+        return "Concerts";
+    }
 }

@@ -12,4 +12,9 @@ public class OthersActivity extends BaseListActivity_ {
     protected String service() {
         return events(5L);
     }
+
+    @Override
+    protected String header() {
+        return "Others";
+    }
 }

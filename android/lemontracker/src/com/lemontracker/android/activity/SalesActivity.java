@@ -11,4 +11,9 @@ public class SalesActivity extends BaseListActivity_ {
     protected String service() {
         return events(3L);
     }
+
+    @Override
+    protected String header() {
+        return "Sales";
+    }
 }
