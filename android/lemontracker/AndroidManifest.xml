@@ -17,6 +17,7 @@
         <activity android:name=".activity.SearchActivity"/>
         <activity android:name=".activity.TodayActivity_"/>
         <activity android:name=".activity.EventActivity_"/>
+        <activity android:name=".activity.ShopsActivity_"/>
 
     </application>
 
