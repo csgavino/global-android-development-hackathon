@@ -131,6 +131,8 @@ public class DashboardActivity extends Activity {
 
     @Click(R.id.restaurants)
     public void restaurantsCellClicked() {
+        Intent i = new Intent(this, RestaurantsActivity_.class);
+        startActivity(i);
     }
 
     @Click(R.id.sales)
