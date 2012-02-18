@@ -12,6 +12,7 @@
 
     <Button android:id="@+id/listButton"
             android:layout_alignParentRight="true"
+            android:layout_marginRight="5dip"
             android:background="@drawable/list_drawable"
             style="@style/button"/>
 
