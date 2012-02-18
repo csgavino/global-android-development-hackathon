@@ -20,10 +20,9 @@
                   android:layout_below="@id/category"
                   style="@style/hr"/>
 
-        <TextView android:id="@+id/banner"
-                  android:background="#3399FF"
-                  style="@style/banner"
-                  android:layout_below="@id/hr2"/>
+        <ImageView android:id="@+id/banner"
+                   style="@style/banner"
+                   android:layout_below="@id/hr2"/>
 
         <RelativeLayout style="@style/innerContainer"
                         android:layout_below="@id/banner">
