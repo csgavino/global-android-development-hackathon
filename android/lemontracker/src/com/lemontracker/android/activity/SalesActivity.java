@@ -1,6 +1,9 @@
 package com.lemontracker.android.activity;
 
+import android.content.Intent;
+import com.googlecode.androidannotations.annotations.Click;
 import com.googlecode.androidannotations.annotations.EActivity;
+import com.lemontracker.android.R;
 import com.lemontracker.android.base.BaseListActivity_;
 
 import static com.lemontracker.android.WebService.*;
@@ -16,4 +19,26 @@ public class SalesActivity extends BaseListActivity_ {
     protected String header() {
         return "Sales";
     }
+
+    @Click(R.id.radiusButton)
+    public void radiusButtonClicked() {
+        Intent i = new Intent(this, RadiusActivity_.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
+    }
+
+    @Click(R.id.listButton)
+    public void listButtonClicked() {
+        Intent i = new Intent(this, EventListActivity_.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
+    }
+
+    @Click(R.id.searchButton)
+    public void searchButtonClicked() {
+        Intent i = new Intent(this, SearchActivity_.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
+    }
+
 }

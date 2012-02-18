@@ -18,6 +18,7 @@ import com.googlecode.androidannotations.annotations.ItemClick;
 import com.googlecode.androidannotations.annotations.UiThread;
 import com.googlecode.androidannotations.annotations.ViewById;
 import com.lemontracker.android.R;
+import com.lemontracker.android.base.Actionbar;
 import com.lemontracker.android.model.Event;
 import com.lemontracker.android.util.EventArrayAdapter;
 import com.teamcodeflux.android.Result;
@@ -33,7 +34,7 @@ import static com.teamcodeflux.android.RestTemplateFactory.*;
 import static java.util.Arrays.*;
 
 @EActivity(R.layout.search_layout)
-public class SearchActivity extends Activity {
+public class SearchActivity extends Activity implements Actionbar {
     public static final String TAG = SearchActivity.class.getSimpleName();
     private static final String BLANK = "";
 
@@ -104,6 +105,24 @@ public class SearchActivity extends Activity {
         Event event = (Event) object;
         i.putExtra("event", event);
         startActivity(i);
+    }
+
+    @Click(R.id.radiusButton)
+    public void radiusButtonClicked() {
+        Intent i = new Intent(this, RadiusActivity_.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
+    }
+
+    @Click(R.id.listButton)
+    public void listButtonClicked() {
+        Intent i = new Intent(this, EventListActivity_.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
+    }
+
+    @Click(R.id.searchButton)
+    public void searchButtonClicked() {
     }
 
 }

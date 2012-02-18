@@ -12,6 +12,7 @@ import com.googlecode.androidannotations.annotations.EActivity;
 import com.googlecode.androidannotations.annotations.UiThread;
 import com.googlecode.androidannotations.annotations.ViewById;
 import com.lemontracker.android.R;
+import com.lemontracker.android.base.Actionbar;
 import com.lemontracker.android.model.Category;
 import org.springframework.web.client.RestClientException;
 
@@ -26,7 +27,7 @@ import static com.teamcodeflux.android.RestTemplateFactory.*;
 import static java.util.Arrays.*;
 
 @EActivity
-public class DashboardActivity extends Activity {
+public class DashboardActivity extends Activity implements Actionbar {
     public static String TAG = DashboardActivity.class.getSimpleName();
     @ViewById
     ImageView today;

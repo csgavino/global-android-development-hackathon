@@ -28,7 +28,7 @@ import static java.util.Arrays.*;
 
 
 @EActivity(R.layout.specific_list_layout)
-public abstract class BaseListActivity extends Activity {
+public abstract class BaseListActivity extends Activity implements Actionbar {
     protected static final String TAG = EventListActivity.class.getSimpleName();
 
     @ViewById(R.id.__list)

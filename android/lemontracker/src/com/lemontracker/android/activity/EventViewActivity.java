@@ -15,6 +15,7 @@ import com.googlecode.androidannotations.annotations.Extra;
 import com.googlecode.androidannotations.annotations.UiThread;
 import com.googlecode.androidannotations.annotations.ViewById;
 import com.lemontracker.android.R;
+import com.lemontracker.android.base.Actionbar;
 import com.lemontracker.android.model.Category;
 import com.lemontracker.android.model.Event;
 import com.teamcodeflux.android.Result;
@@ -27,7 +28,7 @@ import static com.lemontracker.android.util.IOUtils.*;
 import static com.teamcodeflux.android.RestTemplateFactory.*;
 
 @EActivity(R.layout.event_layout)
-public class EventViewActivity extends Activity {
+public class EventViewActivity extends Activity implements Actionbar {
     public static String TAG = EventViewActivity.class.getSimpleName();
 
     @Extra("event")
@@ -106,6 +107,27 @@ public class EventViewActivity extends Activity {
     @UiThread
     public void renderBanner(Bitmap bitmap) {
         banner.setImageBitmap(bitmap);
+    }
+
+    @Click(R.id.radiusButton)
+    public void radiusButtonClicked() {
+        Intent i = new Intent(this, RadiusActivity_.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
+    }
+
+    @Click(R.id.listButton)
+    public void listButtonClicked() {
+        Intent i = new Intent(this, EventListActivity_.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
+    }
+
+    @Click(R.id.searchButton)
+    public void searchButtonClicked() {
+        Intent i = new Intent(this, SearchActivity_.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
     }
 
 }
