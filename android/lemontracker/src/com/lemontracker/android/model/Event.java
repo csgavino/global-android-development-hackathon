@@ -73,6 +73,7 @@ public class Event implements Parcelable {
         parcel.writeString(thumbnailURL);
         parcel.writeSerializable(dateStart);
         parcel.writeSerializable(dateEnd);
+        parcel.writeLong(categoryId);
         /*
         parcel.writeParcelable(category, i);
         parcel.writeParcelable(user, i);
@@ -88,6 +89,7 @@ public class Event implements Parcelable {
         thumbnailURL = source.readString();
         dateStart = (Date) source.readSerializable();
         dateEnd = (Date) source.readSerializable();
+        categoryId = source.readLong();
         /*
         category = source.readParcelable(Category.class.getClassLoader());
         user = source.readParcelable(User.class.getClassLoader());
