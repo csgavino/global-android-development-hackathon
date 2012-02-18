@@ -36,13 +36,13 @@ public class EventArrayAdapter extends ArrayAdapter<Event> {
         */
 
         TextView name = (TextView) row.findViewById(R.id.header);
-        name.setText("Hello");
+        name.setText(event.getName());
 
         TextView blurb = (TextView) row.findViewById(R.id.blurb);
-        blurb.setText("Swedes");
+        blurb.setText(event.getBlurb());
 
         TextView date = (TextView) row.findViewById(R.id.date);
-        date.setText("Vikings");
+        date.setText(event.getDateStart().toString());
 
         return row;
     }
