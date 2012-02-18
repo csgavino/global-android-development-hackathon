@@ -13,6 +13,8 @@ public class WebService {
     private static final String BANNER = "http://{0}:{1}/{2}/";
     private static final String SEARCH = "http://{0}:{1}/services/search/";
     private static final String RADIUS = "http://{0}:{1}/services/search/location/";
+    private static final String LOCATE = "http://{0}:{1}/services/soap/locate/";
+    private static final String LOCATIONS = "http://{0}:{1}/services/soap/locations/";
 
     public static String category(Long id) {
         return format(CATEGORY, BASE_URL, PORT, id);
@@ -44,6 +46,14 @@ public class WebService {
 
     public static String radius() {
         return format(RADIUS, BASE_URL, PORT);
+    }
+
+    public static String locate() {
+        return format(LOCATE, BASE_URL, PORT);
+    }
+
+    public static String locations() {
+        return format(LOCATIONS, BASE_URL, PORT);
     }
 
 }
