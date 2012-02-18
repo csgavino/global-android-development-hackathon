@@ -3,6 +3,7 @@ package com.lemontracker.android.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import com.googlecode.androidannotations.annotations.Background;
@@ -56,6 +57,7 @@ public class EventListActivity extends Activity {
     @UiThread
     public void processResult(Result result) {
         if (result.hasErrors()) {
+            Log.e(TAG, result.getResult().toString());
             EventListActivity.this.finish();
         } else {
             List __events = (ArrayList<Event>) result.getResult();

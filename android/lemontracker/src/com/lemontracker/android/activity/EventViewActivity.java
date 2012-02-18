@@ -73,6 +73,7 @@ public class EventViewActivity extends Activity {
             Category result = getRestTemplate().getForObject(URL, Category.class);
             processResult(new Result(result));
         } catch (RestClientException e) {
+            Log.e(TAG, e.toString());
             processResult(new Result(e));
         }
     }
