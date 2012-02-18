@@ -8,7 +8,6 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import java.util.Date;
 
 @JsonIgnoreProperties({
-        "category_id",
         "created_at",
         "updated_at"
 })
@@ -27,6 +26,8 @@ public class Event implements Parcelable {
     private Date dateEnd;
     private Float latitude;
     private Float longitude;
+    @JsonProperty("category_id")
+    private Integer categoryId;
     /*
     private Category category;
     private User user;
@@ -209,6 +210,14 @@ public class Event implements Parcelable {
 
     public void setLongitude(Float longitude) {
         this.longitude = longitude;
+    }
+
+    public Integer getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
     }
 
 }
