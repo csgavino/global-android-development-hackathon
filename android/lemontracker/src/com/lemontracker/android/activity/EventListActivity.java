@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class EventsActivity extends ListActivity {
+public class EventListActivity extends ListActivity {
 
     protected List<Event> events;
 

@@ -7,7 +7,7 @@ import com.googlecode.androidannotations.annotations.EActivity;
 import com.lemontracker.android.R;
 
 @EActivity
-public class EventActivity extends Activity {
+public class EventViewActivity extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
