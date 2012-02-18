@@ -1,6 +1,7 @@
 package com.lemontracker.android.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -33,7 +34,6 @@ public class EventListActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.list_layout);
     }
 
     @Override
@@ -66,6 +66,9 @@ public class EventListActivity extends Activity {
 
     @ItemClick
     void __list(Object object) {
+        Intent i = new Intent(this, EventViewActivity_.class);
         Event event = (Event) object;
+        i.putExtra("event", event);
+        startActivity(i);
     }
 }
