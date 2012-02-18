@@ -14,7 +14,7 @@ public class WebService {
     private static final String SEARCH = "http://{0}:{1}/services/search/";
     private static final String RADIUS = "http://{0}:{1}/services/search/location/";
     private static final String LOCATE = "http://{0}:{1}/services/soap/locate/";
-    private static final String LOCATIONS = "http://{0}:{1}/services/soap/locations/";
+    private static final String LOCATIONS = "http://{0}:{1}/services/locations/";
 
     public static String category(Long id) {
         return format(CATEGORY, BASE_URL, PORT, id);
