@@ -8,6 +8,7 @@ import java.util.Date;
 public class Event implements Parcelable {
     private Long id;
     private String name;
+    private String blurb;
     private String description;
     private String imageURL;
     private String thumbnailURL;
@@ -25,6 +26,7 @@ public class Event implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeLong(id);
         parcel.writeString(name);
+        parcel.writeString(blurb);
         parcel.writeString(description);
         parcel.writeString(imageURL);
         parcel.writeString(thumbnailURL);
@@ -37,6 +39,7 @@ public class Event implements Parcelable {
     private void readFromParcel(final Parcel source) {
         id = source.readLong();
         name = source.readString();
+        blurb = source.readString();
         description = source.readString();
         imageURL = source.readString();
         thumbnailURL = source.readString();
@@ -80,6 +83,14 @@ public class Event implements Parcelable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getBlurb() {
+        return blurb;
+    }
+
+    public void setBlurb(String blurb) {
+        this.blurb = blurb;
     }
 
     public String getDescription() {
