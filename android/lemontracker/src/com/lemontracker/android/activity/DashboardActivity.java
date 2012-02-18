@@ -111,6 +111,12 @@ public class DashboardActivity extends Activity {
 
     }
 
+    @Click(R.id.radiusButton)
+    public void radiusButtonClicked() {
+        Intent i = new Intent(this, RadiusActivity_.class);
+        startActivity(i);
+    }
+
     @Click(R.id.listButton)
     public void listButtonClicked() {
         Intent i = new Intent(this, EventListActivity_.class);

@@ -22,8 +22,8 @@
         <activity android:name=".activity.ConcertsActivity_"/>
         <activity android:name=".activity.SalesActivity_"/>
         <activity android:name=".activity.OthersActivity_"/>
-        <activity android:name=".activity.EventMapActivity"/>
         <activity android:name=".activity.EventMapActivity_"/>
+        <activity android:name=".activity.RadiusActivity_"/>
 
         <uses-library android:name="com.google.android.maps"/>
 
