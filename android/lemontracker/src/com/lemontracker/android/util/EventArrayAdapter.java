@@ -2,15 +2,23 @@ package com.lemontracker.android.util;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.lemontracker.android.R;
 import com.lemontracker.android.model.Event;
+import com.teamcodeflux.android.Result;
 
+import java.io.IOException;
+import java.net.URL;
 import java.util.List;
+
+import static com.lemontracker.android.WebService.*;
+import static com.lemontracker.android.util.IOUtils.*;
 
 public class EventArrayAdapter extends ArrayAdapter<Event> {
 
@@ -29,11 +37,8 @@ public class EventArrayAdapter extends ArrayAdapter<Event> {
 
         Event event = getItem(position);
 
-        /*
-        ImageView icon = (ImageView) row.findViewById(R.id.listIcon);
-        Bitmap bitmap = resource(subcat.getName());
-        icon.setImageBitmap(bitmap);
-        */
+        ImageView icon = (ImageView) row.findViewById(R.id.image);
+        new LoadContentTask().execute(event, icon);
 
         TextView name = (TextView) row.findViewById(R.id.header);
         name.setText(event.getName());
@@ -47,10 +52,32 @@ public class EventArrayAdapter extends ArrayAdapter<Event> {
         return row;
     }
 
-    private Bitmap resource(String name) {
-        return null;
-    }
+    private class LoadContentTask extends AsyncTask<Object, Void, Result<Bitmap>> {
+        private Event event;
+        private ImageView view;
 
+        @Override
+        protected Result<Bitmap> doInBackground(Object... arg) {
+            event = (Event) arg[0];
+            view = (ImageView) arg[1];
+
+            try {
+                String thumbnailURL = thumb(this.event.getThumbnailURL());
+                Bitmap bitmap = loadImageFromURL(new URL(thumbnailURL));
+                return new Result<Bitmap>(bitmap);
+            } catch (IOException e) {
+                return new Result(e);
+            }
+        }
+
+        protected void onPostExecute(Result<Bitmap> result) {
+            if (!result.hasErrors()) {
+                view.setImageBitmap(result.getResult());
+                view.postInvalidate();
+            }
+        }
+
+    }
 }
 
 
