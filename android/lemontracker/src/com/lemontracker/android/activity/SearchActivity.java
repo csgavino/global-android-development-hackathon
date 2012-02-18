@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -66,7 +67,6 @@ public class SearchActivity extends Activity {
             map.add("searchstring", query);
 
             String URL = search();
-//            Event[] result = getRestTemplate().getForObject(URL, Event[].class);
             Event[] result = getRestTemplate().postForObject(URL, map, Event[].class);
 
             processResult(new Result<ArrayList<Event>>(new ArrayList<Event>(asList(result))));
@@ -90,7 +90,10 @@ public class SearchActivity extends Activity {
             ArrayAdapter adapter = new EventArrayAdapter(this, R.layout.list_cell_layout, events);
             list.setAdapter(adapter);
         } else {
-            Toast.makeText(SearchActivity.this, "No Results", Toast.LENGTH_LONG).show();
+            Log.e(TAG, "Toast!");
+            Toast toast = Toast.makeText(SearchActivity.this, "No Results", Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
         }
     }
 
