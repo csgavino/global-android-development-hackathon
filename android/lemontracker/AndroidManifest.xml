@@ -20,6 +20,7 @@
         <activity android:name=".activity.RestaurantsActivity_"/>
         <activity android:name=".activity.PartiesActivity_"/>
         <activity android:name=".activity.ConcertsActivity_"/>
+        <activity android:name=".activity.SalesActivity_"/>
 
     </application>
 
