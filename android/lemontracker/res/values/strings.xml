@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MainActivity</string>
+    <string name="app_name">LemonTracker</string>
     <string name="fake_latin_long">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus porttitor tortor in
         lorem
         fringilla nec consectetur nulla venenatis. Pellentesque sed ipsum ipsum.
