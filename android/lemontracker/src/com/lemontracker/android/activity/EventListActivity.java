@@ -39,11 +39,11 @@ public class EventListActivity extends Activity {
     @Override
     public void onResume() {
         super.onResume();
-        fetchEntries();
+        fetchEvents();
     }
 
     @Background
-    public void fetchEntries() {
+    public void fetchEvents() {
         try {
             String URL = allEvents();
             Event[] result = getRestTemplate().getForObject(URL, Event[].class);

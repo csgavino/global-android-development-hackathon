@@ -38,7 +38,7 @@ public abstract class BaseListActivity extends Activity {
 
     @AfterViews
     public void afterCreate() {
-        fetchEntries();
+        fetchEvents();
         setHeader();
     }
 
@@ -51,7 +51,7 @@ public abstract class BaseListActivity extends Activity {
     protected abstract String header();
 
     @Background
-    public void fetchEntries() {
+    public void fetchEvents() {
         try {
             Event[] result = getRestTemplate().getForObject(service(), Event[].class);
             processResult(new Result<ArrayList<Event>>(new ArrayList<Event>(asList(result))));
