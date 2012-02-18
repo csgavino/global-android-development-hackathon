@@ -17,6 +17,31 @@ public class Event implements Parcelable {
     private Category category;
     private User user;
 
+    private Event() {
+    }
+
+    public static Event buildEvent(final String name,
+                                   final String blurb,
+                                   final String description,
+                                   final String imageURL,
+                                   final String thumbnailURL,
+                                   final Date dateStart,
+                                   final Date dateEnd,
+                                   final Category category,
+                                   final User user) {
+
+        Event event = new Event();
+        event.name = name;
+        event.blurb = blurb;
+        event.description = description;
+        event.imageURL = imageURL;
+        event.thumbnailURL = thumbnailURL;
+        event.dateStart = dateStart;
+        event.dateEnd = dateEnd;
+
+        return event;
+    }
+
     @Override
     public int describeContents() {
         return 0;
