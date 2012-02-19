@@ -42,6 +42,13 @@
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"/>
 
+            <ImageView android:id="@+id/facebook"
+                       android:src="@drawable/facebook_drawable"
+                       android:layout_alignTop="@id/h1"
+                       android:layout_toLeftOf="@id/map"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"/>
+
             <TextView android:id="@+id/hr3"
                       android:layout_below="@id/h2"
                       style="@style/hr.gray"/>
