@@ -114,14 +114,14 @@ class ServiceController < ApplicationController
   
   
   def soap_register   
-      response = MyWebService.invoke :get_consent, {:u_name => 'pfombgm68', :u_pin => '21737318', :m_s_i_s_d_n => '09178950998', :api_type => 'location'}
+      response = MyWebService.invoke :get_consent, {:u_name => 'pfombgm68', :u_pin => '21737318', :m_s_i_s_d_n => '09151781837', :api_type => 'location'}
       render  :json => response
   end
   
   #SOAP
   
   def soap_locate
-    response = MyWebService.invoke :get_loc, {:u_name => 'pfombgm68', :u_pin => '21737318', :m_s_i_s_d_n => '09178950998'}
+    response = MyWebService.invoke :get_loc, {:u_name => 'pfombgm68', :u_pin => '21737318', :m_s_i_s_d_n => '09151781837'}
     if response != nil 
       loc_response = response[:get_loc_response]
       location_return = loc_response[:location_return]
@@ -143,9 +143,12 @@ class ServiceController < ApplicationController
     loc.latitude = param_X[:value]
     loc.transaction_id = param_transaction_id[:value]
     
+    response =false
     if loc.save 
-      puts "SAVED LOCATION"
+      response = true
     end
+    
+    render :json => response
     
   end
   
