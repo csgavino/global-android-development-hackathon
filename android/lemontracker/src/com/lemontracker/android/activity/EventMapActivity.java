@@ -39,7 +39,7 @@ public class EventMapActivity extends MapActivity {
         mapview.setBuiltInZoomControls(true);
         mapOverlays = mapview.getOverlays();
         drawable = this.getResources().getDrawable(R.drawable.androidmarker);
-        itemizedOverlay = new MapItemizedOverlay(drawable);
+        itemizedOverlay = new MapItemizedOverlay(drawable, this);
 
         int latE6 = (int) (event.getLatitude() * 1e6);
         int lonE6 = (int) (event.getLongitude() * 1e6);
@@ -47,7 +47,7 @@ public class EventMapActivity extends MapActivity {
         GeoPoint point = new GeoPoint(latE6, lonE6);
         mapview.getController().setCenter(point);
 
-        OverlayItem overlayitem = new OverlayItem(point, "", "");
+        OverlayItem overlayitem = new OverlayItem(point, event.getName(), event.getBlurb());
         itemizedOverlay.addOverlay(overlayitem);
         mapOverlays.add(itemizedOverlay);
     }
