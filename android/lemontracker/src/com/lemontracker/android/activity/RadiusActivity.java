@@ -32,6 +32,7 @@ import static java.util.Arrays.*;
 @EActivity(R.layout.map_layout)
 public class RadiusActivity extends MapActivity {
     private static final String TAG = RadiusActivity.class.getSimpleName();
+    private static final String MSISDN = "09151781837";
     private static final int WAIT_TIME = 5000;
 
     private int executions;
@@ -98,7 +99,7 @@ public class RadiusActivity extends MapActivity {
     public void requestUpdates() {
         try {
             MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
-            map.add("Placeholder", "Boobs");
+            map.add("mobile_number", MSISDN);
             transId = getRestTemplate().postForObject(locate(), map, String.class);
             updateHandler.postDelayed(updateCoordsTask, WAIT_TIME);
         } catch (RestClientException e) {
