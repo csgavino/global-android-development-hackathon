@@ -91,3 +91,23 @@ androidSignAndAlign {
 }
 
 defaultTasks 'assemble'
+
+processResources {
+    expand(project.properties)
+}
+
+task configureDebug << {
+    jar.classifier = 'debug'
+}
+
+task configureRelease << {
+    proguard.enabled = true
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+        }   
+    }   
+}
