@@ -4,6 +4,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.widget.Toast;
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapView;
@@ -36,7 +37,7 @@ public class RadiusActivity extends MapActivity {
     private int executions;
     private Float latitude = new Float("14.620748");
     private Float longitude = new Float("121.053451");
-    private String transId = "23737294091789509982012021904024325";
+    private String transId = "23737294091789509982012021903024235";
     private MapItemizedOverlay itemizedOverlay;
     private List<Overlay> mapOverlays;
     private Drawable drawable;
@@ -48,7 +49,7 @@ public class RadiusActivity extends MapActivity {
         super.onCreate(savedInstanceState);
         requestUpdates();
         // This is a manual call and should be removed
-        // updateHandler.postDelayed(updateCoordsTask, WAIT_TIME);
+        //updateHandler.postDelayed(updateCoordsTask, WAIT_TIME);
     }
 
     @AfterViews
@@ -101,7 +102,7 @@ public class RadiusActivity extends MapActivity {
 
             updateHandler.postDelayed(updateCoordsTask, WAIT_TIME);
         } catch (RestClientException e) {
-            Log.e(TAG, e.toString());
+            Log.e(TAG, "Failed to post request " + e.toString());
         }
     }
 
@@ -116,7 +117,7 @@ public class RadiusActivity extends MapActivity {
                 Event[] result = getRestTemplate().postForObject(locations(), map, Event[].class);
                 processResult(new Result<ArrayList<Event>>(new ArrayList<Event>(asList(result))));
             } catch (RestClientException e) {
-                Log.e(TAG, e.toString());
+                Log.e(TAG, "Rest client exception " + e.toString());
             }
         }
     };
@@ -132,6 +133,7 @@ public class RadiusActivity extends MapActivity {
     private void parseResults(List<Event> events) {
         if (!events.isEmpty()) {
             mapview.getController().setCenter(getCenter());
+            Toast.makeText(this, "Updating the map", Toast.LENGTH_LONG).show();
             fillOverlay(events);
         } else {
             Log.e(TAG, "No Results");
@@ -152,8 +154,11 @@ public class RadiusActivity extends MapActivity {
 
     private void reupdateCoords() {
         if (executions < 10) {
+            Log.e(TAG, "OK executed " + executions);
             updateHandler.postDelayed(updateCoordsTask, WAIT_TIME);
             executions++;
+        } else {
+            Toast.makeText(this, "No Results", Toast.LENGTH_LONG).show();
         }
     }
 
