@@ -69,6 +69,12 @@ public class RadiusActivity extends MapActivity {
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+        updateHandler.removeCallbacks(updateCoordsTask);
+    }
+
+    @Override
     protected boolean isRouteDisplayed() {
         return false;
     }
