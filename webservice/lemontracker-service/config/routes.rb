@@ -6,11 +6,27 @@ LemontrackerService::Application.routes.draw do
  
   get 'services/categories/:id/events' =>  "service#category_events" 
  
+  get 'services/events' => "service#events_index"
+  
   get 'services/events/:id' =>  "service#events_show"
   
   get 'services/radius_test'  => "service#radius_test"
   
-  get 'services/today/events' =>"service#category_today"
+  get 'services/today' =>"service#category_today"
+  
+  post 'services/search' => "service#events_search"
+  
+  post 'services/search/location'  =>  "service#events_search_location"
+  
+  post 'services/soap/register' => "service#soap_register"
+  
+  post 'services/soap/locate' => "service#soap_locate"
+  
+  post 'services/soap' => "service#soap_save_location"
+  
+  #get 'services/locations/:transaction_id' =>  "service#locations_show"
+  
+  post 'services/locations/'  =>  "service#locations_show"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
