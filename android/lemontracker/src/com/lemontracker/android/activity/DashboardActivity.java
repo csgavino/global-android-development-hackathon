@@ -118,6 +118,10 @@ public class DashboardActivity extends Activity implements Actionbar {
         startActivity(i);
     }
 
+    @Override
+    public void logoButtonClicked() {
+    }
+
     @Click(R.id.listButton)
     public void listButtonClicked() {
         Intent i = new Intent(this, EventListActivity_.class);

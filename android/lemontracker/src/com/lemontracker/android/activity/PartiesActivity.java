@@ -27,6 +27,13 @@ public class PartiesActivity extends BaseListActivity_ {
         startActivity(i);
     }
 
+    @Click(R.id.header)
+    public void logoButtonClicked() {
+        Intent i = new Intent(this, DashboardActivity_.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
+    }
+
     @Click(R.id.listButton)
     public void listButtonClicked() {
         Intent i = new Intent(this, EventListActivity_.class);
