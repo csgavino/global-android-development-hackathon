@@ -35,13 +35,12 @@
                     android:layout_height="wrap_content">
 
                 <TextView android:id="@+id/h1"
-                          android:layout_weight=".7"
-                          android:text="This is a huge damn text"
+                          android:layout_weight=".8"
                           android:layout_below="@id/banner"
                           style="@style/h1"/>
 
                 <LinearLayout android:id="@+id/iconContainer"
-                              android:layout_weight=".3"
+                              android:layout_weight=".2"
                               android:layout_alignTop="@id/h1"
                               android:orientation="horizontal"
                               android:layout_width="wrap_content"
@@ -63,7 +62,6 @@
             </LinearLayout>
 
             <TextView android:id="@+id/h2"
-                      android:text="Subheader"
                       android:layout_below="@id/redundantContainer"
                       style="@style/h2"/>
 
