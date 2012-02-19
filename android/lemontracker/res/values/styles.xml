@@ -108,4 +108,15 @@
         <item name="android:layout_marginBottom">6dip</item>
     </style>
 
+    <style name="dashboard">
+        <item name="android:background">@color/dashboard</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:padding">12dip</item>
+    </style>
+
 </resources>

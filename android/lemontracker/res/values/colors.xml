@@ -8,4 +8,5 @@
     <color name="cellHeader">#313131</color>
     <color name="cellBlurb">#555555</color>
     <color name="cellDate">#ACACAC</color>
+    <color name="dashboard">#AA000000</color>
 </resources>
