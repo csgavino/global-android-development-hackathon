@@ -114,15 +114,20 @@ class ServiceController < ApplicationController
   
   
   def soap_register   
-      response = MyWebService.invoke :get_consent, {:u_name => 'pfombgm68', :u_pin => '21737318', :m_s_i_s_d_n => '09178950998', :api_type => 'location'}
+      response = MyWebService.invoke :get_consent, {:u_name => 'pfombgm68', :u_pin => '21737318', :m_s_i_s_d_n => '09151781837', :api_type => 'location'}
       render  :json => response
   end
   
   #SOAP
   
   def soap_locate
-    response = MyWebService.invoke :get_loc, {:u_name => 'pfombgm68', :u_pin => '21737318', :m_s_i_s_d_n => '09178950998'}
-    render  :json => response
+    response = MyWebService.invoke :get_loc, {:u_name => 'pfombgm68', :u_pin => '21737318', :m_s_i_s_d_n => '09151781837'}
+    if response != nil 
+      loc_response = response[:get_loc_response]
+      location_return = loc_response[:location_return]
+    end
+    
+    render  :json => location_return[:tran_id]
   end
   
   def soap_save_location    
@@ -138,72 +143,85 @@ class ServiceController < ApplicationController
     loc.latitude = param_X[:value]
     loc.transaction_id = param_transaction_id[:value]
     
+    response =false
     if loc.save 
-      puts "SAVED LOCATION"
+      response = true
     end
+    
+    render :json => response
     
   end
   
   def locations_show
-    location = Location.find_by_transaction_id(params[:transaction_id]) 
+    location = Location.find_by_transaction_id(params[:transaction_id][0]) 
     
-    longitude_string = location.longitude.split(".")
+    if location != nil
     
-    seconds = longitude_string[0][-2,3]
-    minutes = longitude_string[0][-4,2]
-    degrees = longitude_string[0][-7,3]
-    if degrees == nil
-      degrees = longitude_string[0][-6,2]
-    end
+        longitude_string = location.longitude.split(".")
     
-    milli = "."+longitude_string[1][-4,3]
-    header = longitude_string[1][-1,1]
+        seconds = longitude_string[0][-2,3]
+        minutes = longitude_string[0][-4,2]
+        degrees = longitude_string[0][-7,3]
+        if degrees == nil
+          degrees = longitude_string[0][-6,2]
+        end
     
-    #puts degrees+minutes+seconds+milli+header
+        milli = "."+longitude_string[1][-4,3]
+        header = longitude_string[1][-1,1]
     
-    total_seconds = (minutes.to_f*60) + seconds.to_f + milli.to_f
+        #puts degrees+minutes+seconds+milli+header
     
-    center_x = degrees.to_f + (total_seconds/3600)
+        total_seconds = (minutes.to_f*60) + seconds.to_f + milli.to_f
     
-    if header == 'W'
-      center_x = center_x * -1
-    end
+        center_x = degrees.to_f + (total_seconds/3600)
+    
+        if header == 'W'
+          center_x = center_x * -1
+        end
      
     
-    latitude_string = location.latitude.split(".")
+        latitude_string = location.latitude.split(".")
     
-    seconds = latitude_string[0][-2,3]
-    minutes = latitude_string[0][-4,2]
-    degrees = latitude_string[0][-7,3]
-    if degrees == nil
-      degrees = latitude_string[0][-6,2]
+        seconds = latitude_string[0][-2,3]
+        minutes = latitude_string[0][-4,2]
+        degrees = latitude_string[0][-7,3]
+        if degrees == nil
+          degrees = latitude_string[0][-6,2]
+        end
+        milli = "."+latitude_string[1][-4,3]
+        header = latitude_string[1][-1,1]
+    
+        #puts degrees+minutes+seconds+milli+header
+    
+        total_seconds = (minutes.to_f*60) + seconds.to_f + milli.to_f
+    
+        center_y = degrees.to_f + (total_seconds/3600)
+        if header == 'S'
+          center_y = center_y * -1
+        end
+    
+        puts degrees
+        puts "center_x : " + center_x.to_s
+        puts "center_y : " + center_y.to_s
+      
+        date_today = DateTime.now.in_time_zone('Asia/Taipei')
+        
+        events = Event.find(:all,:order => "date_start ASC", 
+            :conditions => 
+            ["date_start <= ? AND date_end >= ?", date_today, date_today]
+            )
+        response = []
+        i = 0
+        events.each do |event|
+          if in_circle(center_x, center_y, 0.0899104604, event.longitude, event.latitude)
+            response[i] = event
+            i = i + 1
+          end  
+        end
+    else
+      response = []
     end
-    milli = "."+latitude_string[1][-4,3]
-    header = latitude_string[1][-1,1]
-    
-    #puts degrees+minutes+seconds+milli+header
-    
-    total_seconds = (minutes.to_f*60) + seconds.to_f + milli.to_f
-    
-    center_y = degrees.to_f + (total_seconds/3600)
-    if header == 'S'
-      center_y = center_y * -1
-    end
-    
-    puts degrees
-    puts "center_x : " + center_x.to_s
-    puts "center_y : " + center_y.to_s
-    
-    events = Event.all
-    response = []
-    i = 0
-    events.each do |event|
-      if in_circle(center_x, center_y, 0.0899104604, event.longitude, event.latitude)
-        response[i] = event
-        i = i + 1
-      end  
-    end
-    render  :json => response
+      render  :json => response
   end
   
   private
