@@ -47,7 +47,7 @@
     </style>
 
     <style name="category">
-        <item name="android:background">#333333</item>
+        <item name="android:background">@drawable/background_stripe</item>
         <item name="android:textColor">#FFFFFF</item>
         <item name="android:textSize">24sp</item>
         <item name="android:gravity">center_horizontal|center_vertical</item>
