@@ -3,15 +3,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 style="@style/actionbarContainer">
 
-    <TextView android:id="@+id/lemonTextView"
-              style="@style/text.lemon"/>
-
-    <TextView android:id="@+id/trackerTextView"
-              android:layout_toRightOf="@id/lemonTextView"
-              style="@style/text.tracker"/>
+    <ImageView android:id="@+id/header"
+               android:src="@drawable/lemon"
+               android:layout_centerVertical="true"
+               android:layout_height="44dip"
+               android:layout_width="164dip"
+               android:scaleType="fitXY"/>
 
     <Button android:id="@+id/listButton"
             android:layout_alignParentRight="true"
+            android:layout_marginRight="5dip"
             android:background="@drawable/list_drawable"
             style="@style/button"/>
 
@@ -19,5 +20,23 @@
             android:layout_toLeftOf="@id/listButton"
             android:background="@drawable/search_drawable"
             style="@style/button"/>
+
+    <Button android:id="@+id/radiusButton"
+            android:layout_toLeftOf="@id/searchButton"
+            android:background="@drawable/radius_drawable"
+            style="@style/button"/>
+
+    <LinearLayout android:id="@+id/borderContainer"
+                  android:layout_below="@id/listButton"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content">
+
+        <ImageView android:id="@+id/shadow"
+                   android:layout_width="fill_parent"
+                   android:layout_height="wrap_content"
+                   android:scaleType="fitXY"
+                   android:src="@drawable/shadow"/>
+
+    </LinearLayout>
 
 </RelativeLayout>

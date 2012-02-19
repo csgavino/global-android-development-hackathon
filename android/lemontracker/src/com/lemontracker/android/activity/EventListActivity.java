@@ -1,16 +1,11 @@
 package com.lemontracker.android.activity;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 import com.googlecode.androidannotations.annotations.Background;
 import com.googlecode.androidannotations.annotations.Click;
 import com.googlecode.androidannotations.annotations.EActivity;
@@ -22,8 +17,6 @@ import com.lemontracker.android.base.Actionbar;
 import com.lemontracker.android.model.Event;
 import com.lemontracker.android.util.EventArrayAdapter;
 import com.teamcodeflux.android.Result;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestClientException;
 
 import java.util.ArrayList;
@@ -33,45 +26,29 @@ import static com.lemontracker.android.WebService.*;
 import static com.teamcodeflux.android.RestTemplateFactory.*;
 import static java.util.Arrays.*;
 
-@EActivity(R.layout.search_layout)
-public class SearchActivity extends Activity implements Actionbar {
-    public static final String TAG = SearchActivity.class.getSimpleName();
-    private static final String BLANK = "";
+@EActivity(R.layout.list_layout)
+public class EventListActivity extends Activity implements Actionbar {
+    protected static final String TAG = EventListActivity.class.getSimpleName();
 
     @ViewById(R.id.__list)
     ListView list;
 
-    @ViewById
-    EditText queryEditText;
-
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
-    @Click(R.id.submitButton)
-    public void onSubmitClicked() {
-        if (!queryEditText.getText().toString().trim().equals(BLANK)) {
-            hideKeyboard();
-            fetchEvents(queryEditText.getText().toString().trim());
-            queryEditText.setText(BLANK);
-        }
-    }
-
-    private void hideKeyboard() {
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(queryEditText.getWindowToken(), 0);
+    @Override
+    public void onResume() {
+        super.onResume();
+        fetchEvents();
     }
 
     @Background
-    public void fetchEvents(String query) {
+    public void fetchEvents() {
         try {
-
-            MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
-            map.add("searchstring", query);
-
-            String URL = search();
-            Event[] result = getRestTemplate().postForObject(URL, map, Event[].class);
-
+            String URL = allEvents();
+            Event[] result = getRestTemplate().getForObject(URL, Event[].class);
             processResult(new Result<ArrayList<Event>>(new ArrayList<Event>(asList(result))));
         } catch (RestClientException e) {
             processResult(new Result(e));
@@ -82,20 +59,11 @@ public class SearchActivity extends Activity implements Actionbar {
     public void processResult(Result result) {
         if (result.hasErrors()) {
             Log.e(TAG, result.getResult().toString());
+            EventListActivity.this.finish();
         } else {
             List __events = (ArrayList<Event>) result.getResult();
-            parseResults(__events);
-        }
-    }
-
-    private void parseResults(List events) {
-        if (!events.isEmpty()) {
-            ArrayAdapter adapter = new EventArrayAdapter(this, R.layout.list_cell_layout, events);
+            ArrayAdapter adapter = new EventArrayAdapter(this, R.layout.list_cell_layout, __events);
             list.setAdapter(adapter);
-        } else {
-            Toast toast = Toast.makeText(SearchActivity.this, "No Results", Toast.LENGTH_LONG);
-            toast.setGravity(Gravity.CENTER, 0, 0);
-            toast.show();
         }
     }
 
@@ -116,13 +84,13 @@ public class SearchActivity extends Activity implements Actionbar {
 
     @Click(R.id.listButton)
     public void listButtonClicked() {
-        Intent i = new Intent(this, EventListActivity_.class);
-        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(i);
     }
 
     @Click(R.id.searchButton)
     public void searchButtonClicked() {
+        Intent i = new Intent(this, SearchActivity_.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
     }
 
 }

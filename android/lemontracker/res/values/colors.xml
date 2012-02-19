@@ -1,4 +1,12 @@
 <resources>
     <color name="green">#339900</color>
     <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray">#CCCCCC</color>
+    <color name="cellDivider">#E5E5E5</color>
+    <color name="cellBackground">#F7F7F7</color>
+    <color name="cellHeader">#313131</color>
+    <color name="cellBlurb">#555555</color>
+    <color name="cellDate">#ACACAC</color>
+    <color name="dashboard">#AA000000</color>
 </resources>

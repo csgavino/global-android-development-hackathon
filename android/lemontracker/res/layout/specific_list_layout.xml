@@ -8,6 +8,15 @@
 
     <include android:id="@+id/actionbar" layout="@layout/actionbar_layout"/>
 
+    <TextView android:id="@+id/hr1"
+              style="@style/hr"/>
+
+    <TextView android:id="@+id/category"
+              style="@style/category"/>
+
+    <TextView android:id="@+id/hr2"
+              style="@style/hr"/>
+
     <ListView android:id="@+id/__list"
               android:divider="@color/cellDivider"
               android:dividerHeight="1px"

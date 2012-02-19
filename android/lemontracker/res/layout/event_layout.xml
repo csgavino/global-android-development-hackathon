@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            style="@style/scrollContainer">
+
+    <RelativeLayout style="@style/parentContainer"
+                    android:background="@color/cellBackground">
+
+        <include android:id="@+id/actionbar" layout="@layout/actionbar_layout"/>
+
+        <TextView android:id="@+id/hr1"
+                  style="@style/hr"
+                  android:layout_below="@id/actionbar"/>
+
+        <TextView android:id="@+id/category"
+                  style="@style/category"
+                  android:layout_below="@id/hr1"/>
+
+        <TextView android:id="@+id/hr2"
+                  android:layout_below="@id/category"
+                  style="@style/hr"/>
+
+        <ImageView android:id="@+id/banner"
+                   style="@style/banner"
+                   android:layout_below="@id/hr2"/>
+
+        <RelativeLayout style="@style/innerContainer"
+                        android:layout_below="@id/banner">
+
+            <LinearLayout
+                    android:id="@+id/redundantContainer"
+                    android:weightSum="1"
+                    android:gravity="center_vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView android:id="@+id/h1"
+                          android:layout_weight=".8"
+                          android:layout_below="@id/banner"
+                          style="@style/h1"/>
+
+                <LinearLayout android:id="@+id/iconContainer"
+                              android:layout_weight=".2"
+                              android:layout_alignTop="@id/h1"
+                              android:orientation="horizontal"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content">
+
+                    <ImageView android:id="@+id/facebook"
+                               android:src="@drawable/facebook_drawable"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"/>
+
+                    <ImageView android:id="@+id/map"
+                               android:src="@drawable/map_drawable"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <TextView android:id="@+id/h2"
+                      android:layout_below="@id/redundantContainer"
+                      style="@style/h2"/>
+
+            <TextView android:id="@+id/hr3"
+                      android:layout_below="@id/h2"
+                      style="@style/hr.gray"/>
+
+            <TextView android:id="@+id/description"
+                      android:layout_below="@id/hr3"
+                      android:text="@string/fake_latin_long"
+                      style="@style/description"/>
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</ScrollView>

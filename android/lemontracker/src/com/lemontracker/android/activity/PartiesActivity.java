@@ -9,15 +9,15 @@ import com.lemontracker.android.base.BaseListActivity_;
 import static com.lemontracker.android.WebService.*;
 
 @EActivity
-public class TodayActivity extends BaseListActivity_ {
+public class PartiesActivity extends BaseListActivity_ {
     @Override
     protected String service() {
-        return events(0L);
+        return events(4L);
     }
 
     @Override
     protected String header() {
-        return "Today";
+        return "Parties";
     }
 
     @Click(R.id.radiusButton)
