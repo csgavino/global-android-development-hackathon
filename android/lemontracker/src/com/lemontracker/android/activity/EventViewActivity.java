@@ -73,6 +73,7 @@ public class EventViewActivity extends Activity implements Actionbar {
 
     @Click(R.id.facebook)
     public void facebookCellClicked() {
+        Log.e(TAG, "Bananas");
     }
 
     @Background
