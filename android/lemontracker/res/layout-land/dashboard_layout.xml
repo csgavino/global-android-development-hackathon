@@ -17,49 +17,103 @@
                 android:layout_height="wrap_content">
 
             <TableRow>
-                <ImageView android:id="@+id/today"
-                           android:scaleType="fitXY"
-                           android:layout_span="2"
-                           android:layout_margin="4dip"
-                           android:layout_width="wrap_content"
-                           android:layout_height="256dip"/>
+                <FrameLayout android:layout_span="2"
+                             android:layout_margin="4dip"
+                             android:layout_width="wrap_content"
+                             android:layout_height="256dip">
+
+                    <ImageView android:id="@+id/today"
+                               android:scaleType="fitXY"
+                               android:layout_width="fill_parent"
+                               android:layout_height="256dip"/>
+
+                    <TextView android:text="Today"
+                              style="@style/dashboard"/>
+
+                </FrameLayout>
             </TableRow>
 
             <TableRow>
-                <ImageView android:id="@+id/restaurants"
-                           android:scaleType="fitXY"
-                           android:layout_margin="4dip"
-                           android:layout_width="256dip"
-                           android:layout_height="256dip"/>
+                <FrameLayout android:layout_margin="4dip"
+                             android:layout_width="256dip"
+                             android:layout_height="256dip">
 
-                <ImageView android:id="@+id/sales"
-                           android:scaleType="fitXY"
-                           android:layout_margin="4dip"
-                           android:layout_width="256dip"
-                           android:layout_height="256dip"/>
+                    <ImageView android:id="@+id/restaurants"
+                               android:scaleType="fitXY"
+                               android:layout_width="fill_parent"
+                               android:layout_height="256dip"/>
+
+                    <TextView android:text="Restaurants"
+                              style="@style/dashboard"/>
+
+                </FrameLayout>
+
+                <FrameLayout android:layout_margin="4dip"
+                             android:layout_width="256dip"
+                             android:layout_height="256dip">
+
+                    <ImageView android:id="@+id/sales"
+                               android:scaleType="fitXY"
+                               android:layout_width="fill_parent"
+                               android:layout_height="256dip"/>
+
+                    <TextView android:text="Sales"
+                              style="@style/dashboard"/>
+
+                </FrameLayout>
+
             </TableRow>
 
             <TableRow>
-                <ImageView android:id="@+id/concerts"
-                           android:scaleType="fitXY"
-                           android:layout_margin="4dip"
-                           android:layout_width="256dip"
-                           android:layout_height="256dip"/>
 
-                <ImageView android:id="@+id/parties"
-                           android:scaleType="fitXY"
-                           android:layout_margin="4dip"
-                           android:layout_width="256dip"
-                           android:layout_height="256dip"/>
+                <FrameLayout android:layout_margin="4dip"
+                             android:layout_width="256dip"
+                             android:layout_height="256dip">
+
+                    <ImageView android:id="@+id/concerts"
+                               android:scaleType="fitXY"
+                               android:layout_width="fill_parent"
+                               android:layout_height="256dip"/>
+
+                    <TextView android:text="Concerts"
+                              style="@style/dashboard"/>
+
+
+                </FrameLayout>
+
+                <FrameLayout android:layout_margin="4dip"
+                             android:layout_width="256dip"
+                             android:layout_height="256dip">
+
+                    <ImageView android:id="@+id/parties"
+                               android:scaleType="fitXY"
+                               android:layout_width="256dip"
+                               android:layout_height="256dip"/>
+
+                    <TextView android:text="Parties"
+                              style="@style/dashboard"/>
+
+                </FrameLayout>
+
             </TableRow>
 
             <TableRow>
-                <ImageView android:id="@+id/others"
-                           android:scaleType="fitXY"
-                           android:layout_span="2"
-                           android:layout_margin="4dip"
-                           android:layout_width="wrap_content"
-                           android:layout_height="256dip"/>
+
+                <FrameLayout android:layout_span="2"
+                             android:layout_margin="4dip"
+                             android:layout_width="wrap_content"
+                             android:layout_height="256dip">
+
+                    <ImageView android:id="@+id/others"
+                               android:scaleType="fitXY"
+                               android:layout_width="fill_parent"
+                               android:layout_height="256dip"/>
+
+                    <TextView android:text="Others"
+                              style="@style/dashboard"/>
+
+                </FrameLayout>
+
             </TableRow>
 
         </TableLayout>
