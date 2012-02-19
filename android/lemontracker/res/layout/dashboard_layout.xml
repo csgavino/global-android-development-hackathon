@@ -54,7 +54,6 @@
 
                     <ImageView android:id="@+id/sales"
                                android:scaleType="fitXY"
-                               android:layout_margin="4dip"
                                android:layout_width="192dip"
                                android:layout_height="192dip"/>
 
@@ -73,7 +72,6 @@
 
                     <ImageView android:id="@+id/concerts"
                                android:scaleType="fitXY"
-                               android:layout_margin="4dip"
                                android:layout_width="192dip"
                                android:layout_height="192dip"/>
 
@@ -89,7 +87,6 @@
 
                     <ImageView android:id="@+id/parties"
                                android:scaleType="fitXY"
-                               android:layout_margin="4dip"
                                android:layout_width="192dip"
                                android:layout_height="192dip"/>
 
@@ -109,8 +106,6 @@
 
                     <ImageView android:id="@+id/others"
                                android:scaleType="fitXY"
-                               android:layout_span="2"
-                               android:layout_margin="4dip"
                                android:layout_width="wrap_content"
                                android:layout_height="192dip"/>
 
