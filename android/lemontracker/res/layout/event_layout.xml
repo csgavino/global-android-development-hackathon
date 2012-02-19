@@ -27,27 +27,45 @@
         <RelativeLayout style="@style/innerContainer"
                         android:layout_below="@id/banner">
 
-            <TextView android:id="@+id/h1"
-                      android:layout_below="@id/banner"
-                      style="@style/h1"/>
+            <LinearLayout
+                    android:id="@+id/redundantContainer"
+                    android:weightSum="1"
+                    android:gravity="center_vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView android:id="@+id/h1"
+                          android:layout_weight=".7"
+                          android:text="This is a huge damn text"
+                          android:layout_below="@id/banner"
+                          style="@style/h1"/>
+
+                <LinearLayout android:id="@+id/iconContainer"
+                              android:layout_weight=".3"
+                              android:layout_alignTop="@id/h1"
+                              android:orientation="horizontal"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content">
+
+                    <ImageView android:id="@+id/facebook"
+                               android:src="@drawable/facebook_drawable"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"/>
+
+                    <ImageView android:id="@+id/map"
+                               android:src="@drawable/map_drawable"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
 
             <TextView android:id="@+id/h2"
-                      android:layout_below="@id/h1"
+                      android:text="Subheader"
+                      android:layout_below="@id/redundantContainer"
                       style="@style/h2"/>
-
-            <ImageView android:id="@+id/map"
-                       android:src="@drawable/map_drawable"
-                       android:layout_alignTop="@id/h1"
-                       android:layout_alignParentRight="true"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"/>
-
-            <ImageView android:id="@+id/facebook"
-                       android:src="@drawable/facebook_drawable"
-                       android:layout_alignTop="@id/h1"
-                       android:layout_toLeftOf="@id/map"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"/>
 
             <TextView android:id="@+id/hr3"
                       android:layout_below="@id/h2"

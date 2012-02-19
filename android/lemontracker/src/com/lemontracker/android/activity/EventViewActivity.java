@@ -71,6 +71,10 @@ public class EventViewActivity extends Activity implements Actionbar {
         startActivity(i);
     }
 
+    @Click(R.id.facebook)
+    public void facebookCellClicked() {
+    }
+
     @Background
     public void fetchEntry() {
         try {
