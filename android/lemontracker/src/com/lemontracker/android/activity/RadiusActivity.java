@@ -97,9 +97,9 @@ public class RadiusActivity extends MapActivity {
     @Background
     public void requestUpdates() {
         try {
-            MultiValueMap<String, Float> map = new LinkedMultiValueMap<String, Float>();
+            MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
+            map.add("Placeholder", "Boobs");
             transId = getRestTemplate().postForObject(locate(), map, String.class);
-
             updateHandler.postDelayed(updateCoordsTask, WAIT_TIME);
         } catch (RestClientException e) {
             Log.e(TAG, "Failed to post request " + e.toString());
